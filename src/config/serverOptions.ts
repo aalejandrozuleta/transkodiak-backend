@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import checkDatabaseConnection from './dbHealthCheck';
 import helmet from 'helmet';
-import morgan from'morgan';
+import morgan from 'morgan';
 
 // Cargar las variables de entorno desde .env
 dotenv.config();

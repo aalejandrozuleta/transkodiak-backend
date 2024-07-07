@@ -17,7 +17,7 @@ export const registerService = async (userData: RegisterDto) => {
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
     (hashError) => {
-      console.log(hashError);      
+      console.log(hashError);
       throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
     },
   );
