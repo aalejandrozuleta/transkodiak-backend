@@ -12,7 +12,7 @@
       "@config/*": ["config/*"],
       "@dto/*": ["dto/*"],
       "@helpers/*": ["helpers/*"],
-      "@interface/*": ["interface/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
       "@repositories/*": ["repositories/*"],
       "@routes/*": ["routes/*"],
