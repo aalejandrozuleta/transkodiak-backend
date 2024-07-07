@@ -1,3 +1,4 @@
+import { createVehicleCompany } from '@interfaces/vehicleCompany/createVehicleCompany';
 import { body, validationResult, ValidationChain } from 'express-validator';
 
 const registerValidator: ValidationChain[] = [
@@ -50,8 +51,8 @@ const registerValidator: ValidationChain[] = [
     ),
 ];
 
-const validateUser = (date: any) => {
-  const errors = validationResult(date);
+const validateUser = (data: createVehicleCompany) => {
+  const errors = validationResult(data);
 
   if (!errors.isEmpty()) {
     return errors.array();
