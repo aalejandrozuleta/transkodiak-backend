@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -11,6 +11,6 @@ import { routerVehicleCompany } from '@routes/vehicleCompanyRoutes';
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
 // Error handling
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   res.status(500).send({ message: err.message });
 });
