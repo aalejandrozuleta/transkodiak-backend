@@ -6,6 +6,11 @@ import RegisterRepository from '@repositories/vehicleCompany/register';
 import { ERROR_MESSAGE } from './utils/messagesError';
 
 export const registerService = async (userData: RegisterDto) => {
+  console.log({
+    mss: 'ss',
+    userData: userData,
+  });
+
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [vehicleCompanyFindByNameInterface[], FieldPacket[]] =
     await RegisterRepository.findVehicleCompanyByName(userData);
