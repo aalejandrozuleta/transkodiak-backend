@@ -1,0 +1,14 @@
+import express, { Router } from 'express';
+export const routerIntermediary: Router = express.Router();
+
+//* ----- REGISTER VEHICLE COMPANY -----
+import { registerValidator } from 'middleware/validation/intermediary/register';
+import { registerController } from 'controllers/intermediary/register';
+
+/**
+ * @route POST /register
+ * @description Registrar un nuevo usuario de la compañía de vehículos
+ * @access Público
+ */
+
+routerIntermediary.post('/register', registerValidator, registerController);
