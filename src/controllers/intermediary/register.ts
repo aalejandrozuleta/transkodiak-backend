@@ -17,15 +17,15 @@ export const registerController = async (req: Request, res: Response) => {
 
   const user = new RegisterDto(
     userData.name,
-    userData.phone,
     userData.email,
+    userData.phone,
     userData.address,
     userData.password,
   );
 
   try {
     await registerService(user);
-    res.status(201).json({ message: 'Intermdiario registrado exitosamente' });
+    res.status(201).json({ message: 'Intermediario registrado exitosamente' });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {

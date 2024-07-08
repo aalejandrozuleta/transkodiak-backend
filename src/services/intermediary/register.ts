@@ -6,13 +6,13 @@ import RegisterRepository from '@repositories/intermediary/registerIntermediary'
 import { ERROR_MESSAGE } from '../vehicleCompany/utils/messagesError';
 
 export const registerService = async (userData: RegisterDto) => {
-  console.log(userData);
-
-  // Verificar si ya existe un intermediario con el mismo nombre
+  // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
     await RegisterRepository.findIntermediaryByName(userData);
 
-  if (existingName.length > 0) {
+  const result = existingName[0];
+
+  if (result.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
@@ -25,7 +25,7 @@ export const registerService = async (userData: RegisterDto) => {
   );
   userData.password = passwordHash;
 
-  // Intentar registrar al intermediario en la base de datos
+  // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerIntermediary(userData).catch(
     (dbError) => {
       console.log(dbError);
