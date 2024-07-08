@@ -4,8 +4,7 @@ import { Request, Response } from 'express';
 import AuthDto from '@dto/vehicleCompany/auth';
 import { authService } from '@services/vehicleCompany/auth';
 
-
-export const authController = async (req:Request, res:Response) => {
+export const authController = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
@@ -14,10 +13,7 @@ export const authController = async (req:Request, res:Response) => {
   }
 
   const userData: authInterface = req.body;
-  const user = new AuthDto(
-    userData.email,
-    userData.password,
-  );
+  const user = new AuthDto(userData.email, userData.password);
 
   try {
     const { token } = await authService(user, userData);

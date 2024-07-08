@@ -9,7 +9,7 @@ export const generateToken = (
   user_type: string,
   blockUser: number,
   timeBlock: Date,
-  reuseToken?: string
+  reuseToken?: string,
 ): string => {
   const secret = process.env.JWT_SECRET;
   const expiresIn = process.env.JWT_EXPIRES_IN;
@@ -33,6 +33,6 @@ export const generateToken = (
   if (reuseToken) {
     return reuseToken;
   }
-  
+
   return jwt.sign(payload, secret, { expiresIn });
 };

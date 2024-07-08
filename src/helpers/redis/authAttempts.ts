@@ -11,7 +11,9 @@ export const getFailedAttempts = async (email: string): Promise<number> => {
 
 export const incrementFailedAttempts = async (email: string): Promise<void> => {
   const attempts = await getFailedAttempts(email);
-  await client.set(`failed_attempts:${email}`, attempts + 1, { EX: BLOCK_TIME });
+  await client.set(`failed_attempts:${email}`, attempts + 1, {
+    EX: BLOCK_TIME,
+  });
 };
 
 export const resetFailedAttempts = async (email: string): Promise<void> => {

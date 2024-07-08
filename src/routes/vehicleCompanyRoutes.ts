@@ -5,7 +5,6 @@ export const routerVehicleCompany: Router = express.Router();
 import { registerValidator } from 'middleware/validation/vehicleCompany/register';
 import { registerController } from 'controllers/vehicleCompany/register';
 
-
 /**
  * @route POST /register
  * @description Registrar un nuevo usuario de la compañía de vehículos
