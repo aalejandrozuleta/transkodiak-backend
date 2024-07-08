@@ -1,5 +1,5 @@
 import pool from './mysql';
-import { checkRedisCodeConnectionCode } from './redisCode';
+import { checkRedisCodeConnectionCode } from './redis';
 
 const checkDatabaseConnection = async () => {
   try {
