@@ -4,13 +4,17 @@ import RegisterDto from '@dto/vehicleCompany/register';
 import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/vehicleCompany/register';
 import { ERROR_MESSAGE } from './utils/messagesError';
+import { sendWelcomeEmail } from '@helpers/mail/welcome';
+
 
 export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [vehicleCompanyFindByNameInterface[], FieldPacket[]] =
     await RegisterRepository.findVehicleCompanyByName(userData);
+  
+  const result = existingName[0];
 
-  if (existingName.length > 0) {
+  if (result.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
@@ -22,6 +26,8 @@ export const registerService = async (userData: RegisterDto) => {
     },
   );
   userData.password = passwordHash;
+
+  await sendWelcomeEmail(userData.email);
 
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerVehicleCompany(userData).catch(
