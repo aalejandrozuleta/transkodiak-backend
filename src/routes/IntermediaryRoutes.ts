@@ -15,8 +15,8 @@ routerIntermediary.post('/register', registerValidator, registerController);
 
 //* ----- AUTH INTERMEDIARY --------------------------------
 
-import { authController } from 'controllers/intermediary/auth';
-import { authValidator } from 'middleware/validation/intermediary/auth';
+import { authController } from '@controller/intermediary/auth';
+import { authValidator } from '@middleware/validation/intermediary/auth';
 
 /**
  * @route POST / Auth
