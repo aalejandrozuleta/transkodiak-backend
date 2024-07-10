@@ -9,11 +9,12 @@
     "outDir": "./dist",
     "baseUrl": "./src/",
     "paths": {
+      "@controller/*": ["controllers/*"],
       "@config/*": ["config/*"],
       "@dto/*": ["dto/*"],
       "@helpers/*": ["helpers/*"],
       "@interfaces/*": ["interfaces/*"],
-      "@middlewares/*": ["middlewares/*"],
+      "@middleware/*": ["middleware/*"],
       "@repositories/*": ["repositories/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
@@ -21,5 +22,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","dist"]
 }

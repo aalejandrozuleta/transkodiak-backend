@@ -2,8 +2,8 @@ import express, { Router } from 'express';
 export const routerVehicleCompany: Router = express.Router();
 
 //* ----- REGISTER VEHICLE COMPANY -----
-import { registerValidator } from 'middleware/validation/vehicleCompany/register';
-import { registerController } from 'controllers/vehicleCompany/register';
+import { registerValidator } from '@middleware/validation/vehicleCompany/register';
+import { registerController } from '@controller/vehicleCompany/register';
 
 /**
  * @route POST /register
@@ -14,8 +14,8 @@ import { registerController } from 'controllers/vehicleCompany/register';
 routerVehicleCompany.post('/register', registerValidator, registerController);
 
 //* ----- AUTH VEHICLE COMPANY -----
-import { authController } from 'controllers/vehicleCompany/auth';
-import { authValidator } from 'middleware/validation/vehicleCompany/auth';
+import { authController } from '@controller/vehicleCompany/auth';
+import { authValidator } from '@middleware/validation/vehicleCompany/auth';
 
 /**
  * @route POST / Auth

@@ -1,4 +1,4 @@
-import { authCompany } from 'services/vehicleCompany/interface/authCompany';
+import { authCompany } from '@services/vehicleCompany/interface/authCompany';
 import db from '@config/mysql';
 import AuthDto from '@dto/vehicleCompany/auth';
 import { FieldPacket } from 'mysql2';

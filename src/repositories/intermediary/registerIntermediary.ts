@@ -1,7 +1,7 @@
 import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import RegisterDto from '@dto/intermediary/registerDto';
-import { intermediaryFindByName } from 'services/intermediary/interface/intermediaryFindByName';
+import { intermediaryFindByName } from '@services/intermediary/interface/intermediaryFindByName';
 
 export default class RegisterRepository {
   static async registerIntermediary(userData: RegisterDto) {

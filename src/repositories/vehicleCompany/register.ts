@@ -1,4 +1,4 @@
-import { vehicleCompanyFindByNameInterface } from 'services/vehicleCompany/interface/vehicleCompanyFindByName';
+import { vehicleCompanyFindByNameInterface } from '@services/vehicleCompany/interface/vehicleCompanyFindByName';
 import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import RegisterDto from '@dto/vehicleCompany/register';
