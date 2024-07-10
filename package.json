@@ -1,14 +1,15 @@
 {
   "name": "transkodiak",
   "version": "1.0.0",
-  "main": "src/app.ts",
+  "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -x ts-node -r tsconfig-paths/register src/app.ts",
-    "start": "npm i && npm run build && node -r module-alias/register dist/app.js",
+    "start": "node -r module-alias/register dist/app.js",
     "prettier": "npx prettier --write \"src/**/*.ts\" --ignore-path .prettierignore",
     "lint": "eslint .",
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "npm run build" 
   },
   "keywords": [],
   "author": "transkodiak",

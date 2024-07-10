@@ -9,6 +9,7 @@
     "typeRoots": ["./node_modules/@types"],
     "outDir": "./dist",
     "baseUrl": "./src/",
+    "moduleResolution": "node",
     "paths": {
       "@controller/*": ["controllers/*"],
       "@config/*": ["config/*"],
