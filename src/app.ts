@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,6 +13,7 @@ import { routerIntermediary } from '@routes/IntermediaryRoutes';
 app.use('/api/vehicleCompany', routerVehicleCompany);
 app.use('/api/intermediary', routerIntermediary);
 // Error handling
-app.use((err: Error, req: Request, res: Response) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+app.use((err: any, res: Response) => {
   res.status(500).send({ message: err.message });
 });
