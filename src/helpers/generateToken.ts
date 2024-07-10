@@ -15,11 +15,15 @@ export const generateToken = (
   const expiresIn = process.env.JWT_EXPIRES_IN;
 
   if (!secret) {
-    throw new Error('JWT secret key not found in environment variables.');
+    throw new Error(
+      'La clave secreta JWT no se encuentra en las variables de entorno.',
+    );
   }
 
   if (!expiresIn) {
-    throw new Error('JWT expiration time not found in environment variables.');
+    throw new Error(
+      'No se encuentra el tiempo de vencimiento de JWT en las variables de entorno.',
+    );
   }
 
   const payload: Payload = {

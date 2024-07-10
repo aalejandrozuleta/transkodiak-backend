@@ -30,6 +30,8 @@ app.disable('x-powered-by');
 // Agrega morgan como middleware
 app.use(morgan('combined'));
 
+app.use(express.urlencoded({ extended: true }));
+
 checkDatabaseConnection()
   .then(() => {
     const PORT: string | number = process.env.PORT || 8000;
