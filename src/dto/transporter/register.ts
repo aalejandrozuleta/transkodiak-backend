@@ -71,15 +71,6 @@ export default class RegisterDto {
   }
 
   /**
-   * Setter idNumber
-   * @param {string} value
-   */
-  public set idNumber(value: string) {
-    this._idNumber = value;
-  }
-
-  /**
-   * Setter name
    * @param {string} value
    */
   public set name(value: string) {

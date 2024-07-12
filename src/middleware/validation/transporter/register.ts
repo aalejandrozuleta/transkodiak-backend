@@ -1,31 +1,22 @@
-import { createTransporter } from '@interfaces/transporter/createTransporter';
+import { createVehicleCompany } from '@interfaces/vehicleCompany/createVehicleCompany';
 import { body, validationResult, ValidationChain } from 'express-validator';
 
 const registerValidator: ValidationChain[] = [
-
   body('name')
     .notEmpty()
-    .withMessage('Nombre es requerido')
+    .withMessage('El Nombre del transportador es requerido')
     .isAlpha()
-    .withMessage('Nombre solo puede contener letras')
+    .withMessage('El Nombre solo puede contener letras')
     .isLength({ min: 3, max: 50 })
     .withMessage('Nombre debe tener entre 3 y 50 caracteres'),
 
-    body('idNumber')
+  body('idNumber')
     .notEmpty()
-    .withMessage('NIT es requerido')
+    .withMessage('la cedula es requerido')
     .isNumeric()
-    .withMessage('NIT debe ser numérico')
-    .isLength({ min: 9, max: 9 })
-    .withMessage('NIT debe tener 9 dígitos'),
-
-  body('phone')
-    .notEmpty()
-    .withMessage('Teléfono es requerido')
-    .matches(/^3\d{9}$/)
-    .withMessage(
-      'Teléfono debe ser numérico, tener 10 dígitos y comenzar con 3',
-    ),
+    .withMessage(' La cedula solo puede contener numeros')
+    .isLength({ min: 8, max: 10 })
+    .withMessage(' debe tener un rango entre 8 a 10 digitos'),
 
   body('email')
     .notEmpty()
@@ -35,11 +26,19 @@ const registerValidator: ValidationChain[] = [
     .isLength({ min: 5, max: 50 })
     .withMessage('Correo electrónico debe tener entre 5 y 50 caracteres'),
 
-  body('address')
+  body('phone')
     .notEmpty()
-    .withMessage('Dirección es requerida')
-    .isLength({ min: 10, max: 100 })
-    .withMessage('Dirección debe tener entre 10 y 100 caracteres'),
+    .withMessage('Teléfono es requerido')
+    .matches(/^3\d{9}$/)
+    .withMessage(
+      'Teléfono debe ser numérico, tener 10 dígitos y comenzar con 3',
+    ),
+
+  body('license')
+    .notEmpty()
+    .withMessage('La licencia es requerida')
+    .isLength({ min: 12, max: 12 })
+    .withMessage('La licencia debe tener 12 numeros'),
 
   body('password')
     .notEmpty()
@@ -52,7 +51,7 @@ const registerValidator: ValidationChain[] = [
     ),
 ];
 
-const validateUser = (data: createTransporter) => {
+const validateUser = (data: createVehicleCompany) => {
   const errors = validationResult(data);
 
   if (!errors.isEmpty()) {
