@@ -7,17 +7,19 @@ import { ERROR_MESSAGE } from './utils/messagesError';
 import { sendWelcomeEmail } from '@helpers/mail/welcome';
 
 export const registerService = async (userData: RegisterDto) => {
-  // Verificar si ya existe un transportador con la misma identificación
-  const [existingTransporter]: [transporterFindByIdentificationId[], FieldPacket[]] =
-    await RegisterRepository.findTransporterByIdentificationId(userData.idNumber);
+  // Verificar si ya existe una empresa con el mismo nombre
+  const [existingName]: [transporterFindByIdentificationId[], FieldPacket[]] =
+    await RegisterRepository.findTransporterByDocument(userData);
 
-    const result = existingTransporter[0];
+  console.log(existingName);
 
-    console.log(result);
-  
-    if (result.length > 0) {
-      throw new Error(ERROR_MESSAGE.EXISTING_NAME);
-    }
+  const result = existingName[0];
+
+  console.log(result);
+
+  if (result.length > 0) {
+    throw new Error(ERROR_MESSAGE.EXISTING_NAME);
+  }
 
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
@@ -30,7 +32,7 @@ export const registerService = async (userData: RegisterDto) => {
 
   await sendWelcomeEmail(userData.email);
 
-  // Intentar registrar el transportador en la base de datos
+  // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerTransporter(userData).catch(
     (dbError) => {
       console.log(dbError);

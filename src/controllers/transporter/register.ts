@@ -1,7 +1,7 @@
-import { validationResult } from 'express-validator';
-import { Request, Response } from 'express';
 import RegisterDto from '@dto/transporter/register';
 import { createTransporter } from '@interfaces/transpoter/createTransporter';
+import { validationResult } from 'express-validator';
+import { Request, Response } from 'express';
 import { registerService } from '@services/transporter/register';
 
 export const registerController = async (req: Request, res: Response) => {
@@ -26,7 +26,7 @@ export const registerController = async (req: Request, res: Response) => {
 
   try {
     await registerService(user);
-    res.status(201).json({ message: 'Usuario registrado exitosamente' });
+    res.status(201).json({ message: 'Transportador registrado exitosamente' });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {
