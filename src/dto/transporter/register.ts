@@ -12,7 +12,7 @@ export default class RegisterDto {
     email: string,
     phone: string,
     license: string,
-    password: string,
+    password: string, 
   ) {
     this._name = name;
     this._idNumber = idNumber;

@@ -13,7 +13,7 @@ export const registerController = async (req: Request, res: Response) => {
       .json({ errors: errors.array().map((err) => err.msg) });
   }
 
-  const userData: createTransporter = req.body;
+  const userData: createTransporter = req.body; 
 
   const user = new RegisterDto(
     userData.name,
