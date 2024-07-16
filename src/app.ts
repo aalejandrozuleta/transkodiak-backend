@@ -11,12 +11,9 @@ import { routerIntermediary } from '@routes/IntermediaryRoutes';
 
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
-<<<<<<< HEAD
 app.use('/api/intermediary', routerIntermediary);
-=======
-app.use('/api/intermediary', routerIntermediary); 
 app.use('/api/transporter', routerTransporter);
->>>>>>> develop
+
 // Error handling
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 app.use((err: any, res: Response) => {
