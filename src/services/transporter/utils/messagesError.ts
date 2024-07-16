@@ -6,3 +6,4 @@ export const ERROR_MESSAGE = {
     BLOCKED_USER: 'El transportedor esta bloqueado',
   };
   
+  

@@ -13,7 +13,7 @@ export const registerService = async (userData: RegisterDto) => {
 
   console.log(existingName);
 
-  const result = existingName[0];
+  const result = existingName[0]; 
 
   console.log(result);
 
