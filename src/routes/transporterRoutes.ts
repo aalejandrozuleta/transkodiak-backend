@@ -12,4 +12,16 @@ import { registerController } from '@controller/transporter/register';
  */
 
 routerTransporter.post('/register', registerValidator, registerController); 
-// borrar
+
+
+//* ----- GET TRANSPORTERS --------------------------------
+
+import { getTransportersController } from '@controller/transporter/getTransporters';
+
+/**
+ * @route GET /transporters
+ * @description Obtener todos los transportadores registrados
+ * @access Público
+ */
+
+routerTransporter.get('/listTransporters', getTransportersController);
