@@ -109,3 +109,4 @@ export default class RegisterDto {
     this._password = value;
   }
 }
+// borrar

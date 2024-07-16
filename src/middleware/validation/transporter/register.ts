@@ -60,3 +60,4 @@ const validateUser = (data: createVehicleCompany) => {
 };
 
 export { registerValidator, validateUser };
+// borrar
