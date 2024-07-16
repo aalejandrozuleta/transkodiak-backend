@@ -1,5 +1,5 @@
 export interface authInterface {
-  intermediary_id: string;
+  id: string;
   password: string;
   email: string;
   token: string;
