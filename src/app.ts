@@ -8,6 +8,7 @@ import app from '@config/serverOptions';
 // Import routes
 import { routerVehicleCompany } from '@routes/vehicleCompanyRoutes';
 import { routerIntermediary } from '@routes/IntermediaryRoutes';
+import { routerTransporter } from '@routes/transporterRoutes';
 
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
