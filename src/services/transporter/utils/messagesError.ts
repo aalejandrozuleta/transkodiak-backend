@@ -5,5 +5,5 @@ export const ERROR_MESSAGE = {
     CREDENTIALS: 'credenciales incorrectas',
     BLOCKED_USER: 'El transportedor esta bloqueado',
   };
-  
+  // borrar
   

@@ -12,3 +12,4 @@ import { registerController } from '@controller/transporter/register';
  */
 
 routerTransporter.post('/register', registerValidator, registerController); 
+// borrar

@@ -16,7 +16,7 @@ export default class RegisterRepository {
     ];
     return db.execute(sql, values);
   }
-  
+
 
   static async findTransporterByDocument(userData: RegisterDto) {
     const sql = 'CALL SearchTransporterByCedula(?)';
@@ -26,3 +26,4 @@ export default class RegisterRepository {
     >;
   }
 }
+// borrar
