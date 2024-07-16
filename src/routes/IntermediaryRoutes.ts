@@ -13,15 +13,3 @@ import { registerController } from '@controller/intermediary/register';
 
 routerIntermediary.post('/register', registerValidator, registerController);
 
-//* ----- AUTH INTERMEDIARY --------------------------------
-
-import { authController } from '@controller/intermediary/auth';
-import { authValidator } from '@middleware/validation/intermediary/auth';
-
-/**
- * @route POST / Auth
- * @description Autenticar un usuario de la compañía de vehículos
- * @access Público
- */
-
-routerIntermediary.post('/auth', authValidator, authController);

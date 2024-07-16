@@ -12,15 +12,3 @@ import { registerController } from '@controller/vehicleCompany/register';
  */
 
 routerVehicleCompany.post('/register', registerValidator, registerController);
-
-//* ----- AUTH VEHICLE COMPANY -----
-import { authController } from '@controller/vehicleCompany/auth';
-import { authValidator } from '@middleware/validation/vehicleCompany/auth';
-
-/**
- * @route POST / Auth
- * @description Autenticar un usuario de la compañía de vehículos
- * @access Público
- */
-
-routerVehicleCompany.post('/auth', authValidator, authController);

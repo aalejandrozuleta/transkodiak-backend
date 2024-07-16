@@ -1,4 +1,4 @@
-import { authInterface } from '@interfaces/intermediary/auth';
+import { authInterface } from '@interfaces/general/auth';
 import { body, validationResult, ValidationChain } from 'express-validator';
 
 const authValidator: ValidationChain[] = [

@@ -1,8 +1,8 @@
-import { authInterface } from '@interfaces/vehicleCompany/auth';
+import { authInterface } from '@interfaces/general/auth';
 import { validationResult } from 'express-validator';
 import { Request, Response } from 'express';
-import AuthDto from '@dto/vehicleCompany/auth';
-import { authService } from '@services/vehicleCompany/auth';
+import AuthDto from '@dto/general/authDto';
+import { authService } from '@services/general/auth';
 
 export const authController = async (req: Request, res: Response) => {
   const errors = validationResult(req);
@@ -11,11 +11,12 @@ export const authController = async (req: Request, res: Response) => {
       .status(400)
       .json({ errors: errors.array().map((err) => err.msg) });
   }
-
   const userData: authInterface = req.body;
   const user = new AuthDto(userData.email, userData.password);
 
   try {
+    console.log('sapo');
+    
     const { token } = await authService(user, userData);
     res.status(201).json({
       mensaje: 'Usuario iniciado con éxito',
