@@ -1,8 +1,9 @@
 export const ERROR_MESSAGE = {
-  EXISTING_NAME: 'El nombre del transportador ya existe',
-  HASH_PASSWORD_FAILED: 'Error al hashear la contraseña',
   DB_ERROR: 'Error en la base de datos',
   CREDENTIALS: 'credenciales incorrectas',
-  BLOCKED_USER: 'El transportedor esta bloqueado',
+  GENERATE_CODE_ERROR: 'Error al generar el código',
+  BLOCKED_USER: 'usuario bloqueado',
+  SAVE_CODE_REDIS_ERROR: 'Error al guardar el código en Redis',
+  SEND_CODE_FORGET_PASSWORD_ERROR: 'Error al enviar el código de recuperación a email',
 };
 // borrar

@@ -11,11 +11,7 @@ export const registerService = async (userData: RegisterDto) => {
   const [existingName]: [transporterFindByIdentificationId[], FieldPacket[]] =
     await RegisterRepository.findTransporterByDocument(userData);
 
-  console.log(existingName);
-
-  const result = existingName[0]; 
-
-  console.log(result);
+  const result = existingName[0];
 
   if (result.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
@@ -40,4 +36,3 @@ export const registerService = async (userData: RegisterDto) => {
     },
   );
 };
-// borrar
