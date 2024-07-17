@@ -15,15 +15,12 @@ export const codeForgetPasswordController = async (
       .json({ errors: errors.array().map((err) => err.msg) });
   }
   const userData: getCodeForgetInterface = req.body;
-  
-  const user = new codeForgetPasswordDto(
-    userData.email,
-    userData.phone,
-  );
-  
+
+  const user = new codeForgetPasswordDto(userData.email, userData.phone);
+
   try {
     await codeForgetPasswordService(user);
-    return res.status(200).json({ message: 'Code was successfully' });
+    return res.status(200).json({ message: 'código enviado ' });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {

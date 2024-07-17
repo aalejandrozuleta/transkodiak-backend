@@ -13,7 +13,7 @@ import { userValidationCode } from '@middleware/validation/general/codeForgetPas
 
 /**
  * @route POST / Auth
- * @description Autenticar un usuario 
+ * @description Autenticar un usuario
  * @access Público
  */
 
@@ -25,4 +25,8 @@ routerGeneral.post('/auth', authValidator, authController);
  * @access Público
  */
 
-routerGeneral.post("/getCode",userValidationCode,codeForgetPasswordController );
+routerGeneral.post(
+  '/getCode',
+  userValidationCode,
+  codeForgetPasswordController,
+);

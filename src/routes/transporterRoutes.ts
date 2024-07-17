@@ -11,5 +11,5 @@ import { registerController } from '@controller/transporter/register';
  * @access Público
  */
 
-routerTransporter.post('/register', registerValidator, registerController); 
+routerTransporter.post('/register', registerValidator, registerController);
 // borrar

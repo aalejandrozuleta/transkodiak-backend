@@ -11,7 +11,6 @@ import { routerIntermediary } from '@routes/IntermediaryRoutes';
 import { routerTransporter } from '@routes/transporterRoutes';
 import { routerGeneral } from '@routes/generalRoutes';
 
-
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
 app.use('/api/intermediary', routerIntermediary);
