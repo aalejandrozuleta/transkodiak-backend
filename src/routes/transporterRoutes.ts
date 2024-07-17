@@ -11,17 +11,5 @@ import { registerController } from '@controller/transporter/register';
  * @access Público
  */
 
-routerTransporter.post('/register', registerValidator, registerController); 
-
-
-//* ----- GET TRANSPORTERS --------------------------------
-
-import { getTransportersController } from '@controller/transporter/getTransporters';
-
-/**
- * @route GET /transporters
- * @description Obtener todos los transportadores registrados
- * @access Público
- */
-
-routerTransporter.get('/listTransporters', getTransportersController);
+routerTransporter.post('/register', registerValidator, registerController);
+// borrar

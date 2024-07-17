@@ -6,12 +6,12 @@ export async function sendWelcomeEmail(userEmail: string) {
     from: 'TranskodiakColombia@gmail.com',
     to: userEmail,
     subject: 'Bienvenido a nuestra página web', // Asunto del correo
-    text: 'Gracias por registrarte en nuestra página web. ¡Esperamos que disfrutes de tu estancia!' // Cuerpo del correo
+    text: 'Gracias por registrarte en nuestra página web. ¡Esperamos que disfrutes de tu estancia!', // Cuerpo del correo
   };
 
   try {
     const info: SentMessageInfo = await transporter.sendMail(mailOptions);
-    console.log('Email enviado: ' + info.messageId); 
+    console.log('Email enviado: ' + info.messageId);
   } catch (error) {
     console.error('Hubo un error al enviar el correo electrónico: ', error);
   }

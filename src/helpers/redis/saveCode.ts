@@ -2,7 +2,7 @@ import { tempCodeInterface } from '@interfaces/general/tempCode';
 import { client } from '@config/redis';
 
 export const saveCodeToRedis = async (code: tempCodeInterface) => {
-  let id = code.id_user.toString();
+  const id = code.id_user.toString();
   try {
     await client.set(id, code.code, { EX: 600 });
   } catch (error) {

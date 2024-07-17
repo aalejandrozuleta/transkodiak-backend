@@ -12,4 +12,3 @@ import { registerController } from '@controller/intermediary/register';
  */
 
 routerIntermediary.post('/register', registerValidator, registerController);
-

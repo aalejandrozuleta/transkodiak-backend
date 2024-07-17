@@ -8,9 +8,9 @@ export const transporter = nodemailer.createTransport({
   auth: {
     type: 'OAuth2',
     user: 'gdgagues@gmail.com', // Reemplaza con tu correo electrónico
-    clientId:process.env.MAILER_ID, // ID de cliente
+    clientId: process.env.MAILER_ID, // ID de cliente
     clientSecret: process.env.MAILER_SECRET, // secreto de cliente
-    refreshToken: process.env.REFRESH_TOKEN , // Tu token de actualización
-    accessToken: oauth2Client.getAccessToken() 
-  }
+    refreshToken: process.env.REFRESH_TOKEN, // Tu token de actualización
+    accessToken: oauth2Client.getAccessToken(),
+  },
 } as nodemailer.TransportOptions);

@@ -1,3 +1,4 @@
+import { getCodeForgetInterface } from '@interfaces/general/codeForgetPassword';
 import { body, validationResult, ValidationChain } from 'express-validator';
 
 const userValidationCode: ValidationChain[] = [
@@ -18,7 +19,7 @@ const userValidationCode: ValidationChain[] = [
     ),
 ];
 
-const validateUser = (date: any) => {
+const validateUser = (date: getCodeForgetInterface) => {
   const errors = validationResult(date);
 
   if (!errors.isEmpty()) {

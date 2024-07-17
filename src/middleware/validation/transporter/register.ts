@@ -8,7 +8,7 @@ const registerValidator: ValidationChain[] = [
     .isAlpha()
     .withMessage('El Nombre solo puede contener letras')
     .isLength({ min: 3, max: 50 })
-    .withMessage('Nombre debe tener entre 3 y 50 caracteres'), 
+    .withMessage('Nombre debe tener entre 3 y 50 caracteres'),
 
   body('idNumber')
     .notEmpty()
