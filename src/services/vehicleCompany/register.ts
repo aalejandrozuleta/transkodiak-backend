@@ -11,11 +11,7 @@ export const registerService = async (userData: RegisterDto) => {
   const [existingName]: [vehicleCompanyFindByNameInterface[], FieldPacket[]] =
     await RegisterRepository.findVehicleCompanyByName(userData);
 
-  console.log(existingName);
-
   const result = existingName[0];
-
-  console.log(result);
 
   if (result.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);

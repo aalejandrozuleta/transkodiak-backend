@@ -1,27 +1,26 @@
-import { authInterface } from '@interfaces/general/auth';
+import { getCodeForgetInterface } from '@interfaces/general/codeForgetPassword';
+import codeForgetPasswordDto from '@dto/general/codeForgetPassword';
 import { validationResult } from 'express-validator';
 import { Request, Response } from 'express';
-import AuthDto from '@dto/general/authDto';
-import { authService } from '@services/general/auth';
+import { codeForgetPasswordService } from '@services/general/codeForgetPassword';
 
-export const authController = async (req: Request, res: Response) => {
+export const codeForgetPasswordController = async (
+  req: Request,
+  res: Response,
+) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)
       .json({ errors: errors.array().map((err) => err.msg) });
   }
-  const userData: authInterface = req.body;
-  const user = new AuthDto(userData.email, userData.password);
+  const userData: getCodeForgetInterface = req.body;
+
+  const user = new codeForgetPasswordDto(userData.email, userData.phone);
 
   try {
-    console.log('sapo');
-
-    const { token } = await authService(user, userData);
-    res.status(201).json({
-      mensaje: 'Usuario iniciado con éxito',
-      toke: token,
-    });
+    await codeForgetPasswordService(user);
+    return res.status(200).json({ message: 'código enviado ' });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {

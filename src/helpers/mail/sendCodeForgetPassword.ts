@@ -1,12 +1,12 @@
 import { transporter } from '@config/serviceEmail';
 import { SentMessageInfo } from 'nodemailer';
 
-export async function sendWelcomeEmail(userEmail: string) {
+export async function sendCodeForgetPassword(userEmail: string, code: string) {
   const mailOptions = {
     from: 'TranskodiakColombia@gmail.com',
     to: userEmail,
-    subject: 'Bienvenido a nuestra página web', // Asunto del correo
-    text: 'Gracias por registrarte en nuestra página web. ¡Esperamos que disfrutes de tu estancia!', // Cuerpo del correo
+    subject: 'Código de recuperación de contraseña', // Asunto del correo
+    text: `Hemos detectado que deseas cambiar la contraseña de tu cuenta. Coloca este código: ${code}`,
   };
 
   try {

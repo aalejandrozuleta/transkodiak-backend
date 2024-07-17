@@ -1,4 +1,4 @@
-export interface transporterFindByIdentificationId{
+export interface transporterFindByIdentificationId {
   [x: string]: number;
 }
 // borrar
