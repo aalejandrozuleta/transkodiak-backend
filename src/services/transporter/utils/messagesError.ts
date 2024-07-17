@@ -3,6 +3,5 @@ export const ERROR_MESSAGE = {
   HASH_PASSWORD_FAILED: 'Error al hashear la contraseña',
   DB_ERROR: 'Error en la base de datos',
   CREDENTIALS: 'credenciales incorrectas',
-  BLOCKED_USER: 'El transportedor esta bloqueado',
+  BLOCKED_USER: 'El transportador esta bloqueado',
 };
-// borrar
