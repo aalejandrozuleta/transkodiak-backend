@@ -1,4 +1,3 @@
-import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 
 export const getAllTransporters = async () => {
