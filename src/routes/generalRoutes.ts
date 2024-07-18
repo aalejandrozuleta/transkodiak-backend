@@ -11,6 +11,9 @@ import { authValidator } from '@middleware/validation/general/auth';
 import { codeForgetPasswordController } from '@controller/general/codeForgetPassword';
 import { userValidationCode } from '@middleware/validation/general/codeForgetPassword';
 
+//* ----- FORGET PASSWORD ------------------------------------
+import { forgetPasswordController } from '@controller/general/forgetPassword';
+
 /**
  * @route POST / Auth
  * @description Autenticar un usuario
@@ -21,7 +24,7 @@ routerGeneral.post('/auth', authValidator, authController);
 
 /**
  * @route POST / validationUser
- * @description Olvidar contraseña
+ * @description Obtener codigo para olvidar clave
  * @access Público
  */
 
@@ -30,3 +33,11 @@ routerGeneral.post(
   userValidationCode,
   codeForgetPasswordController,
 );
+
+/**
+ * @route PUT / cambiar clave
+ * @description cambiar clave con código
+ * @access Público
+ */
+
+routerGeneral.put('/forgetPassword', forgetPasswordController);

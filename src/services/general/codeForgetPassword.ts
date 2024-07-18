@@ -27,6 +27,7 @@ export const codeForgetPasswordService = async (
 
   const temCode: tempCodeInterface = {
     id_user: bdData.id,
+    email: user.email,
     code: code.code,
   };
   await saveCodeToRedis(temCode).catch((saveError) => {
