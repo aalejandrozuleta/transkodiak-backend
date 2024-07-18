@@ -18,7 +18,7 @@ export const authController = async (req: Request, res: Response) => {
     const { token } = await authService(user, userData);
     res.status(201).json({
       mensaje: 'Usuario iniciado con éxito',
-      toke: token,
+      token: token,
     });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
