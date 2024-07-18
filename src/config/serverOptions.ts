@@ -13,7 +13,7 @@ const app = express();
 // Habilitar CORS para todas las rutas
 app.use(
   cors({
-    origin: true,
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
   }),
 );
