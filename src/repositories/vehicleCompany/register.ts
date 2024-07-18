@@ -18,7 +18,7 @@ export default class RegisterRepository {
   }
 
   static async findVehicleCompanyByName(userData: RegisterDto) {
-    const sql = 'CALL SearchCompanyByName(?)';
+    const sql = 'CALL searchCompanyByName(?)';
     const values = [userData.name];
     return db.execute(sql, values) as Promise<
       [vehicleCompanyFindByNameInterface[], FieldPacket[]]
