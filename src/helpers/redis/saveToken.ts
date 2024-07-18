@@ -1,4 +1,3 @@
-// helpers/redis/saveToken.ts
 import { client } from '@config/redis';
 
 export const saveTokenToRedis = async (email: string, token: string) => {

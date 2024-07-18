@@ -15,8 +15,6 @@ export const authController = async (req: Request, res: Response) => {
   const user = new AuthDto(userData.email, userData.password);
 
   try {
-    console.log('sapo');
-
     const { token } = await authService(user, userData);
     res.status(201).json({
       mensaje: 'Usuario iniciado con éxito',
