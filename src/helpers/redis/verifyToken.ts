@@ -1,8 +1,14 @@
-import jwt from 'jsonwebtoken';
+import jwt, {
+  JsonWebTokenError,
+  NotBeforeError,
+  TokenExpiredError,
+} from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { Payload } from '@helpers/interfaces/payload';
+
 dotenv.config();
 
-export const verifyToken = (token: string) => {
+export const verifyToken = (token: string): Payload => {
   const secret = process.env.JWT_SECRET;
 
   if (!secret) {
@@ -11,18 +17,15 @@ export const verifyToken = (token: string) => {
 
   try {
     // Verificar el token
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, secret) as Payload;
     return decoded;
   } catch (error) {
     // Aquí puedes manejar los errores específicos de JWT
-    if (error instanceof jwt.JsonWebTokenError) {
-      // El token no es válido
+    if (error instanceof JsonWebTokenError) {
       throw new Error('Invalid token.');
-    } else if (error instanceof jwt.NotBeforeError) {
-      // El token no es válido antes de una cierta hora
+    } else if (error instanceof NotBeforeError) {
       throw new Error('Token not valid yet.');
-    } else if (error instanceof jwt.TokenExpiredError) {
-      // El token ha expirado
+    } else if (error instanceof TokenExpiredError) {
       throw new Error('Token expired.');
     } else {
       throw error;
