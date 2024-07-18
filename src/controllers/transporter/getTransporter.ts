@@ -2,10 +2,19 @@ import { getTransporterInterface } from '@interfaces/transpoter/getTransporter';
 import { getTransporterService } from '@services/transporter/getTransporter';
 import { Request, Response } from 'express';
 
-export const getTransportersController = async (req: Request, res: Response) => {
+export const getTransportersController = async (
+  req: Request,
+  res: Response,
+) => {
   try {
-    const transporters:getTransporterInterface[] = await getTransporterService(); 
-    res.status(201).json({ message: 'Transportadores conseguidos con éxito', transporters: transporters[0] });
+    const transporters: getTransporterInterface[] =
+      await getTransporterService();
+    res
+      .status(201)
+      .json({
+        message: 'Transportadores conseguidos con éxito',
+        transporters: transporters[0],
+      });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {
@@ -19,4 +28,4 @@ export const getTransportersController = async (req: Request, res: Response) => 
       });
     }
   }
-}
+};
