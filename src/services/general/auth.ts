@@ -14,10 +14,7 @@ import { getTokenFromRedis } from '@helpers/redis/getTokenFromRedis';
 import { saveTokenToRedis } from '@helpers/redis/saveToken';
 
 export const authService = async (user: AuthDto, userData: authInterface) => {
-  // eslint-disable-next-line no-useless-catch
   try {
-    console.log('chupeteo');
-
     // Verificar si el usuario está bloqueado
     if (await isBlocked(user.email)) {
       throw new Error(ERROR_MESSAGE.BLOCKED_USER);

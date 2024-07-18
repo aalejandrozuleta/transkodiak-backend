@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 export const routerTransporter: Router = express.Router();
+import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
 //* ----- REGISTER VEHICLE COMPANY -----
 import { registerValidator } from '@middleware/validation/transporter/register';
@@ -11,8 +12,7 @@ import { registerController } from '@controller/transporter/register';
  * @access Público
  */
 
-routerTransporter.post('/register', registerValidator, registerController); 
-
+routerTransporter.post('/register', registerValidator, registerController);
 
 //* ----- GET TRANSPORTERS --------------------------------
 
@@ -26,7 +26,6 @@ import { getTransportersController } from '@controller/transporter/getTransporte
 
 routerTransporter.get('/listTransporters', getTransportersController);
 
-
 //* ----- DISABLE TRANSPORTER -----
 
 import { disableController } from '@controller/transporter/disable';
@@ -36,7 +35,12 @@ import { disableValidator } from '@middleware/validation/transporter/disable';
  * @route put /disable
  * @description Deshabilitar un transportador
  * @access Privado (JWT)
- * 
+ *
  */
 
-routerTransporter.put('/disable/:id', disableValidator, disableController);
+routerTransporter.put(
+  '/disable/:id',
+  jwtAuthMiddleware,
+  disableValidator,
+  disableController,
+);

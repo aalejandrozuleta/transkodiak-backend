@@ -14,7 +14,7 @@ export const disableController = async (req: Request, res: Response) => {
   }
 
   const userData: disableInterface = {
-    id: Number(req.params.id)
+    id: Number(req.params.id),
   };
 
   const user = new disableDto(userData.id);

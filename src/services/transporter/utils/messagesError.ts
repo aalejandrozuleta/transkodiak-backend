@@ -4,5 +4,5 @@ export const ERROR_MESSAGE = {
   DB_ERROR: 'Error en la base de datos',
   CREDENTIALS: 'credenciales incorrectas',
   BLOCKED_USER: 'El transportador esta bloqueado',
-  INHABILITE_USER:'El transportador no se logra inhabilitar',
+  INHABILITE_USER: 'El transportador no se logra inhabilitar',
 };
