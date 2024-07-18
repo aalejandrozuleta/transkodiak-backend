@@ -12,19 +12,19 @@ import { registerController } from '@controller/transporter/register';
  * @access Público
  */
 
-routerTransporter.post('/register', registerValidator, registerController);
+routerTransporter.post('/register',jwtAuthMiddleware, registerValidator, registerController);
 
 //* ----- GET TRANSPORTERS --------------------------------
 
-import { getTransportersController } from '@controller/transporter/getTransporters';
+import { getTransportersController } from '@controller/transporter/getTransporter';
 
 /**
  * @route GET /transporters
  * @description Obtener todos los transportadores registrados
- * @access Público
+ * @access privado (JWT)
  */
 
-routerTransporter.get('/listTransporters', getTransportersController);
+routerTransporter.get('/listTransporters', jwtAuthMiddleware,getTransportersController);
 
 //* ----- DISABLE TRANSPORTER -----
 
