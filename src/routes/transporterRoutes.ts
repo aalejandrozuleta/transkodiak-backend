@@ -25,3 +25,18 @@ import { getTransportersController } from '@controller/transporter/getTransporte
  */
 
 routerTransporter.get('/listTransporters', getTransportersController);
+
+
+//* ----- DISABLE TRANSPORTER -----
+
+import { disableController } from '@controller/transporter/disable';
+import { disableValidator } from '@middleware/validation/transporter/disable';
+
+/**
+ * @route put /disable
+ * @description Deshabilitar un transportador
+ * @access Privado (JWT)
+ * 
+ */
+
+routerTransporter.put('/disable/:id', disableValidator, disableController);
