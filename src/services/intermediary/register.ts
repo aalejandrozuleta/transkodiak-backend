@@ -3,7 +3,7 @@ import { FieldPacket } from 'mysql2';
 import RegisterDto from '@dto/intermediary/registerDto';
 import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/intermediary/registerIntermediary';
-import { ERROR_MESSAGE } from '../vehicleCompany/utils/messagesError';
+import { ERROR_MESSAGE } from './utils/messagesError';
 
 export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre

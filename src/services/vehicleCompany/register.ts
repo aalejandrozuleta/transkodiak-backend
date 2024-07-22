@@ -14,7 +14,7 @@ export const registerService = async (userData: RegisterDto) => {
   const result = existingName[0];
 
   if (result.length > 0) {
-    throw new Error(ERROR_MESSAGE.EXISTING_NAME);
+    throw new Error(ERROR_MESSAGE.EXISTING);
   }
 
   // Intentar hashear la contraseña
