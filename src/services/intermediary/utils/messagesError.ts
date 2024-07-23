@@ -7,6 +7,6 @@ export const ERROR_MESSAGE = {
   DUPLICATE_ENTRY: 'Uno de los datos ya existe en la base de datos.',
   DUPLICATE_EMAIL: 'El correo electrónico ya está en uso.',
   DUPLICATE_NAME: 'El nombre de la empresa ya está en uso.',
-  DUPLICATE_PHONE: 'El numero de celular ya está en uso.', 
+  DUPLICATE_PHONE: 'El numero de celular ya está en uso.',
   INHABILITE_USER: 'El transportador no se logra inhabilitar',
 };

@@ -16,7 +16,6 @@ export default class RegisterRepository {
     ];
     return db.execute(sql, values);
   }
-
   static async findTransporterByDocument(userData: RegisterDto) {
     const sql = 'CALL SearchTransporterByIdentificationCard(?)';
     const values = [userData.idNumber];

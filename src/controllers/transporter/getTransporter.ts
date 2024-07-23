@@ -9,12 +9,10 @@ export const getTransportersController = async (
   try {
     const transporters: getTransporterInterface[] =
       await getTransporterService();
-    res
-      .status(201)
-      .json({
-        message: 'Transportadores conseguidos con éxito',
-        transporters: transporters[0],
-      });
+    res.status(201).json({
+      message: 'Transportadores conseguidos con éxito',
+      transporters: transporters[0],
+    });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {

@@ -5,7 +5,7 @@ const registerValidator: ValidationChain[] = [
   body('name')
     .notEmpty()
     .withMessage('El Nombre del transportador es requerido')
-    .isAlpha('es-ES', { ignore: ' ' }) 
+    .isAlpha('es-ES', { ignore: ' ' })
     .withMessage('El Nombre solo puede contener letras y espacios')
     .isLength({ min: 3, max: 50 })
     .withMessage('Nombre debe tener entre 3 y 50 caracteres'),
