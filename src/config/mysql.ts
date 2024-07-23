@@ -11,6 +11,7 @@ const pool = createPool({
   namedPlaceholders: true,
   connectionLimit: 10,
   queueLimit: 0,
+  connectTimeout: 10000 
 });
 
 export default pool;
