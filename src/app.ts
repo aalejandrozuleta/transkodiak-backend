@@ -20,7 +20,7 @@ app.use('/api/general', routerGeneral);
 // Error handling
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-app.get('/', (req, res) => {
+app.get('/hola', (req, res) => {
   res.send('Hello World!');
 });
 app.use((err: any, res: Response) => {
