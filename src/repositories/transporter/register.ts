@@ -18,7 +18,7 @@ export default class RegisterRepository {
   }
 
   static async findTransporterByDocument(userData: RegisterDto) {
-    const sql = 'CALL SearchTransporterByCedula(?)';
+    const sql = 'CALL SearchTransporterByIdentificationCard(?)';
     const values = [userData.idNumber];
     return db.execute(sql, values) as Promise<
       [transporterFindByIdentificationId[], FieldPacket[]]
