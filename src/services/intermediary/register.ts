@@ -8,7 +8,12 @@ import { ERROR_MESSAGE } from './utils/messagesError';
 export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
-    await RegisterRepository.findIntermediaryByName(userData);
+    await RegisterRepository.findIntermediaryByName(userData).catch(
+      (error) => {
+        console.log(error);
+        throw new Error(ERROR_MESSAGE.DB_ERROR);
+      },
+    );
 
   const result = existingName[0];
 
@@ -37,8 +42,8 @@ export const registerService = async (userData: RegisterDto) => {
           throw new Error(ERROR_MESSAGE.DUPLICATE_EMAIL);
         } else if (dbError.message.includes('name')) {
           throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
-        } else if (dbError.message.includes('nit')) {
-          throw new Error(ERROR_MESSAGE.DUPLICATE_NIT);
+        } else if (dbError.message.includes('phone')) {
+          throw new Error(ERROR_MESSAGE.DUPLICATE_PHONE);
         }
       }
       throw new Error(ERROR_MESSAGE.DB_ERROR);
