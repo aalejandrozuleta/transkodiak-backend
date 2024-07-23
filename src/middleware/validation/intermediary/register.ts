@@ -5,8 +5,8 @@ const registerValidator: ValidationChain[] = [
   body('name')
     .notEmpty()
     .withMessage('El Nombre es requerido')
-    .isAlpha()
-    .withMessage('El Nombre solo puede contener letras')
+    .isAlpha('es-ES', { ignore: ' ' }) 
+    .withMessage('El Nombre solo puede contener letras y espacios')
     .isLength({ min: 3, max: 50 })
     .withMessage('El Nombre debe tener entre 3 y 50 caracteres'),
 
@@ -37,7 +37,7 @@ const registerValidator: ValidationChain[] = [
     .withMessage('Contraseña es requerida')
     .isLength({ min: 8, max: 255 })
     .withMessage('Contraseña debe tener entre 8 y 255 caracteres')
-    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/)
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\s\S])/)
     .withMessage(
       'Contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial',
     ),

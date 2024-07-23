@@ -5,18 +5,18 @@ const registerValidator: ValidationChain[] = [
   body('name')
     .notEmpty()
     .withMessage('El Nombre del transportador es requerido')
-    .isAlpha()
-    .withMessage('El Nombre solo puede contener letras')
+    .isAlpha('es-ES', { ignore: ' ' }) 
+    .withMessage('El Nombre solo puede contener letras y espacios')
     .isLength({ min: 3, max: 50 })
     .withMessage('Nombre debe tener entre 3 y 50 caracteres'),
 
   body('idNumber')
     .notEmpty()
-    .withMessage('la cedula es requerido')
+    .withMessage('La cédula es requerida')
     .isNumeric()
-    .withMessage(' La cedula solo puede contener numeros')
+    .withMessage('La cédula solo puede contener números')
     .isLength({ min: 8, max: 10 })
-    .withMessage(' debe tener un rango entre 8 a 10 digitos'),
+    .withMessage('La cédula debe tener entre 8 y 10 dígitos'),
 
   body('email')
     .notEmpty()
@@ -38,14 +38,14 @@ const registerValidator: ValidationChain[] = [
     .notEmpty()
     .withMessage('La licencia es requerida')
     .isLength({ min: 12, max: 12 })
-    .withMessage('La licencia debe tener 12 numeros'),
+    .withMessage('La licencia debe tener 12 dígitos'),
 
   body('password')
     .notEmpty()
     .withMessage('Contraseña es requerida')
     .isLength({ min: 8, max: 255 })
     .withMessage('Contraseña debe tener entre 8 y 255 caracteres')
-    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/)
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\s\S])/)
     .withMessage(
       'Contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial',
     ),
@@ -60,4 +60,3 @@ const validateUser = (data: createVehicleCompany) => {
 };
 
 export { registerValidator, validateUser };
-// borrar
