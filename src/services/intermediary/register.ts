@@ -8,12 +8,10 @@ import { ERROR_MESSAGE } from './utils/messagesError';
 export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
-    await RegisterRepository.findIntermediaryByName(userData).catch(
-      (error) => {
-        console.log(error);
-        throw new Error(ERROR_MESSAGE.DB_ERROR);
-      },
-    );
+    await RegisterRepository.findIntermediaryByName(userData).catch((error) => {
+      console.log(error);
+      throw new Error(ERROR_MESSAGE.DB_ERROR);
+    });
 
   const result = existingName[0];
 
