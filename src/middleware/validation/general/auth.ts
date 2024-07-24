@@ -10,12 +10,12 @@ const authValidator: ValidationChain[] = [
     .isLength({ min: 5, max: 50 })
     .withMessage('Correo electrónico debe tener entre 5 y 50 caracteres'),
 
-  body('password')
+    body('password')
     .notEmpty()
     .withMessage('Contraseña es requerida')
     .isLength({ min: 8, max: 255 })
     .withMessage('Contraseña debe tener entre 8 y 255 caracteres')
-    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/)
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\s\S])/)
     .withMessage(
       'Contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial',
     ),

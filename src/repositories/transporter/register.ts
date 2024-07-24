@@ -5,7 +5,7 @@ import RegisterDto from '@dto/transporter/register';
 
 export default class RegisterRepository {
   static async registerTransporter(userData: RegisterDto) {
-    const sql = 'CALL InsertTransporter(?,?,?,?,?,?)';
+    const sql = 'CALL InsertTransporter(?,?,?,?,?,?,?)';
     const values = [
       userData.name,
       userData.idNumber,
@@ -13,6 +13,7 @@ export default class RegisterRepository {
       userData.phone,
       userData.license,
       userData.password,
+      userData.idVehicle,
     ];
     return db.execute(sql, values);
   }
@@ -24,4 +25,3 @@ export default class RegisterRepository {
     >;
   }
 }
-// borrar

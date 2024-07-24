@@ -23,8 +23,6 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   const credentials: authGeneral[] =
     await AuthRepository.authenticateUser(user);
 
-  console.log(credentials);
-
   // Verificar si el usuario existe
   if (credentials.length === 0) {
     await incrementFailedAttempts(user.email);
