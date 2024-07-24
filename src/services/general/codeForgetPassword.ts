@@ -30,6 +30,9 @@ export const codeForgetPasswordService = async (
     email: user.email,
     code: code.code,
   };
+
+  console.log(temCode.code);
+  
   await saveCodeToRedis(temCode).catch((saveError) => {
     console.error(saveError);
     throw new Error(ERROR_MESSAGE.SAVE_CODE_REDIS_ERROR);

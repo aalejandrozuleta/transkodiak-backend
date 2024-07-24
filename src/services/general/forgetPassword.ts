@@ -20,6 +20,8 @@ export const forgetPasswordService = async (userData: forgetPasswordDto) => {
       },
     );
     userData.password_user = hashedPassword;
+    userData.id_user = searchRedis.id;
+    
     await forgetPasswordRepository
       .forgetPassword(userData)
       .catch((errorForgetPassword) => {
