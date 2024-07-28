@@ -22,4 +22,4 @@ import { updateController } from '@controller/vehicleCompany/update';
  * @description Actualizar un usuario de la compañía de vehículos
  * @access Público
  */
-routerVehicleCompany.put('/update', updateValidator , updateController);
+routerVehicleCompany.put('/update/:nit', updateValidator, updateController);

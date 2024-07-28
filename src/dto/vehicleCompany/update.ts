@@ -1,16 +1,16 @@
 export default class UpdateDto {
-  private readonly _nit: string; 
-  private _name: string;
-  private _phone: string;
-  private _email: string;
-  private _address: string;
+  private _nit: string;
+  private _name?: string;
+  private _phone?: string;
+  private _email?: string;
+  private _address?: string;
 
   constructor(
     nit: string,
-    name: string,
-    phone: string,
-    email: string,
-    address: string,
+    name?: string,
+    phone?: string,
+    email?: string,
+    address?: string,
   ) {
     this._nit = nit;
     this._name = name;
@@ -19,41 +19,39 @@ export default class UpdateDto {
     this._address = address;
   }
 
-  // Getters
   public get nit(): string {
     return this._nit;
   }
 
-  public get name(): string {
+  public get name(): string | undefined {
     return this._name;
   }
 
-  public get phone(): string {
+  public get phone(): string | undefined {
     return this._phone;
   }
 
-  public get email(): string {
+  public get email(): string | undefined {
     return this._email;
   }
 
-  public get address(): string {
+  public get address(): string | undefined {
     return this._address;
   }
 
-  // Setters
-  public set name(value: string) {
+  public set name(value: string | undefined) {
     this._name = value;
   }
 
-  public set phone(value: string) {
+  public set phone(value: string | undefined) {
     this._phone = value;
   }
 
-  public set email(value: string) {
+  public set email(value: string | undefined) {
     this._email = value;
   }
 
-  public set address(value: string) {
+  public set address(value: string | undefined) {
     this._address = value;
   }
 }
