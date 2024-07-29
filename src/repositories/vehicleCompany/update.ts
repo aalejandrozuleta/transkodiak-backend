@@ -1,23 +1,17 @@
-import { FieldPacket } from 'mysql2';
+// repositories/vehicleCompany/update.ts
 import db from '@config/mysql';
 import UpdateDto from '@dto/vehicleCompany/update';
+import { QueryResult } from '@interfaces/vehicleCompany/queryResult';
 
-export default class UpdateRepository {
-  static async updateVehicleCompany(userData: UpdateDto) {
-    const sql = 'CALL UpdateVehicleCompany(?, ?, ?, ?, ?)';
-    const values = [
-      userData.nit,
-      userData.name || null,
-      userData.phone || null,
-      userData.email || null,
-      userData.address || null
-    ];
-    return db.execute(sql, values);
-  }
-
-  static async findVehicleCompanyByNit(nit: string) {
-    const sql = 'SELECT * FROM vehicle_company WHERE nit = ?';
-    const values = [nit];
-    return db.execute(sql, values) as Promise<[any[], FieldPacket[]]>;
-  }
-}
+export const updateVehicleCompany = async (userId: string, userData: UpdateDto): Promise<QueryResult> => {
+  const sql = 'CALL UpdateVehicleCompany(?, ?, ?, ?, ?)';
+  const values = [
+    userId,
+    userData.name,
+    userData.phone,
+    userData.email,
+    userData.address,
+  ];
+  const [result]: [QueryResult, any] = await db.execute(sql, values);
+  return result;
+};
