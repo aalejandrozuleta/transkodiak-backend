@@ -12,3 +12,15 @@ import { registerController } from '@controller/vehicleCompany/register';
  */
 
 routerVehicleCompany.post('/register', registerValidator, registerController);
+
+///* ----- UPDATE VEHICLE COMPANY -----
+import { updateValidator } from '@middleware/validation/vehicleCompany/update';
+import { authenticateToken } from '@middleware/validation/vehicleCompany/autenticateToken';
+import { updateController } from '@controller/vehicleCompany/update';
+
+/**
+ * @route PUT /update
+ * @description Actualizar un usuario de la compañía de vehículos
+ * @access Privado
+ */
+routerVehicleCompany.put('/update', authenticateToken, updateValidator, updateController);
