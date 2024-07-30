@@ -1,4 +1,4 @@
-import { body, ValidationChain } from 'express-validator';
+import { body,ValidationChain } from 'express-validator';
 
 const updateValidator: ValidationChain[] = [
   body('name')

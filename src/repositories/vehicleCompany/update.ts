@@ -1,7 +1,7 @@
-// repositories/vehicleCompany/update.ts
 import db from '@config/mysql';
 import UpdateDto from '@dto/vehicleCompany/update';
 import { QueryResult } from '@interfaces/vehicleCompany/queryResult';
+import { FieldPacket } from 'mysql2';
 
 export const updateVehicleCompany = async (
   userId: string,
@@ -15,6 +15,6 @@ export const updateVehicleCompany = async (
     userData.email,
     userData.address,
   ];
-  const [result]: [QueryResult, any] = await db.execute(sql, values);
+  const [result]: [QueryResult, FieldPacket[]] = await db.execute(sql, values);
   return result;
 };
