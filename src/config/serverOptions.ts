@@ -37,10 +37,13 @@ checkDatabaseConnection()
   .then(() => {
     const PORT: string | number = process.env.PORT || 8000;
     app.listen(PORT, () => {
-      console.log(`Servidor corriendo en el puerto http://localhost:${PORT}`);
+      console.info(`Servidor corriendo en el puerto http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('No se pudo iniciar el servidor debido a un error en la base de datos:', error);
+    console.error(
+      'No se pudo iniciar el servidor debido a un error en la base de datos:',
+      error,
+    );
   });
 export default app;

@@ -13,7 +13,7 @@ export const getTransporterService = async () => {
     return result;
   } catch (error) {
     // Si ocurre un error, lo imprimimos en consola y lanzamos un nuevo error con el mensaje correspondiente
-    console.log(error);
+    console.error(error);
     throw new Error(ERROR_MESSAGE.DB_ERROR);
   }
 };

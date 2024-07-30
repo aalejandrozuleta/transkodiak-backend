@@ -13,7 +13,7 @@ const client = createClient({
 const checkRedisCodeConnectionCode = async () => {
   try {
     await client.connect();
-    console.log('Conexión a la base de datos Redis exitosa.');
+    console.info('Conexión a la base de datos Redis exitosa.');
   } catch (error) {
     console.error('Error al conectar con Redis:', error);
   }

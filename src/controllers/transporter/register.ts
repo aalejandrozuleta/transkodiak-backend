@@ -8,7 +8,9 @@ export const registerController = async (req: Request, res: Response) => {
   // validaciones de los datos
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array().map((err) => err.msg) });
+    return res
+      .status(400)
+      .json({ errors: errors.array().map((err) => err.msg) });
   }
 
   const userData: createTransporter = req.body;

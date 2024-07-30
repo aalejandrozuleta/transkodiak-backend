@@ -5,7 +5,13 @@ export default class registerDto {
   private _address: string;
   private _password: string;
 
-  constructor(name: string, email: string, phone: string, address: string, password: string) {
+  constructor(
+    name: string,
+    email: string,
+    phone: string,
+    address: string,
+    password: string,
+  ) {
     this._name = name;
     this._email = email;
     this._phone = phone;

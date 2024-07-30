@@ -9,7 +9,7 @@ export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
     await RegisterRepository.findIntermediaryByName(userData).catch((error) => {
-      console.log(error);
+      console.error(error);
       throw new Error(ERROR_MESSAGE.DB_ERROR);
     });
 
@@ -21,26 +21,30 @@ export const registerService = async (userData: RegisterDto) => {
   }
 
   // Intentar hashear la contraseña
-  const passwordHash = await hashPassword(userData.password).catch((hashError) => {
-    console.log(hashError);
-    throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
-  });
+  const passwordHash = await hashPassword(userData.password).catch(
+    (hashError) => {
+      console.error(hashError);
+      throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
+    },
+  );
   // Guardar la contraseña hasheada en el objeto userData
   userData.password = passwordHash;
 
   // Intentar registrar la empresa en la base de datos
-  return await RegisterRepository.registerIntermediary(userData).catch((dbError) => {
-    console.log(dbError);
-    // Capturar error de entrada duplicada y personalizar el mensaje
-    if (dbError.code === 'ER_DUP_ENTRY') {
-      if (dbError.message.includes('email')) {
-        throw new Error(ERROR_MESSAGE.DUPLICATE_EMAIL);
-      } else if (dbError.message.includes('name')) {
-        throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
-      } else if (dbError.message.includes('phone')) {
-        throw new Error(ERROR_MESSAGE.DUPLICATE_PHONE);
+  return await RegisterRepository.registerIntermediary(userData).catch(
+    (dbError) => {
+      console.error(dbError);
+      // Capturar error de entrada duplicada y personalizar el mensaje
+      if (dbError.code === 'ER_DUP_ENTRY') {
+        if (dbError.message.includes('email')) {
+          throw new Error(ERROR_MESSAGE.DUPLICATE_EMAIL);
+        } else if (dbError.message.includes('name')) {
+          throw new Error(ERROR_MESSAGE.DUPLICATE_NAME);
+        } else if (dbError.message.includes('phone')) {
+          throw new Error(ERROR_MESSAGE.DUPLICATE_PHONE);
+        }
       }
-    }
-    throw new Error(ERROR_MESSAGE.DB_ERROR);
-  });
+      throw new Error(ERROR_MESSAGE.DB_ERROR);
+    },
+  );
 };

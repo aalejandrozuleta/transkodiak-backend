@@ -11,7 +11,7 @@ export async function sendWelcomeEmail(userEmail: string) {
 
   try {
     const info: SentMessageInfo = await transporter.sendMail(mailOptions);
-    console.log('Email enviado: ' + info.messageId);
+    console.info('Email enviado: ' + info.messageId);
   } catch (error) {
     console.error('Hubo un error al enviar el correo electrónico: ', error);
   }

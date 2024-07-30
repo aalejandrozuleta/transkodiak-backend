@@ -23,4 +23,9 @@ import { updateController } from '@controller/vehicleCompany/update';
  * @description Actualizar un usuario de la compañía de vehículos
  * @access Privado
  */
-routerVehicleCompany.put('/update', authenticateToken, updateValidator, updateController);
+routerVehicleCompany.put(
+  '/update',
+  authenticateToken,
+  updateValidator,
+  updateController,
+);

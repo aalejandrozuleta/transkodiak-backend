@@ -4,7 +4,7 @@ import { ERROR_MESSAGE } from './utils/messagesError';
 
 export const disableService = async (user: disableDto) => {
   await disableRepository.disableAccount(user).catch((errorBd) => {
-    console.log(errorBd);
+    console.error(errorBd);
     throw new Error(ERROR_MESSAGE.INHABILITE_USER);
   });
 };

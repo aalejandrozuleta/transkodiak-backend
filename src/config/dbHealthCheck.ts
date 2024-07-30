@@ -4,7 +4,7 @@ import { checkRedisCodeConnectionCode } from './redis';
 const checkDatabaseConnection = async () => {
   try {
     const mysqlConnection = await pool.getConnection();
-    console.log('Conexión a la base de datos MySQL exitosa.');
+    console.info('Conexión a la base de datos MySQL exitosa.');
     mysqlConnection.release();
 
     checkRedisCodeConnectionCode();

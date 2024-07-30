@@ -18,17 +18,21 @@ export const registerService = async (userData: RegisterDto) => {
   }
 
   // Intentar hashear la contraseña
-  const passwordHash = await hashPassword(userData.password).catch((hashError) => {
-    console.log(hashError);
-    throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
-  });
+  const passwordHash = await hashPassword(userData.password).catch(
+    (hashError) => {
+      console.error(hashError);
+      throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
+    },
+  );
   userData.password = passwordHash;
 
   await sendWelcomeEmail(userData.email);
 
   // Intentar registrar la empresa en la base de datos
-  return await RegisterRepository.registerTransporter(userData).catch((dbError) => {
-    console.log(dbError);
-    throw new Error(ERROR_MESSAGE.DB_ERROR);
-  });
+  return await RegisterRepository.registerTransporter(userData).catch(
+    (dbError) => {
+      console.error(dbError);
+      throw new Error(ERROR_MESSAGE.DB_ERROR);
+    },
+  );
 };

@@ -54,12 +54,17 @@ const INVALID_THEMES = [
 
 // Función para verificar si el texto contiene alguno de los temas especificados
 const containsTheme = (text: string, themes: string[]): boolean => {
-  return themes.some((theme) => text.toLowerCase().includes(theme.toLowerCase()));
+  return themes.some((theme) =>
+    text.toLowerCase().includes(theme.toLowerCase()),
+  );
 };
 
 // Función para validar si la respuesta generada es válida según los temas permitidos y no permitidos
 const isValidResponse = (response: string): boolean => {
-  return containsTheme(response, VALID_THEMES) && !containsTheme(response, INVALID_THEMES);
+  return (
+    containsTheme(response, VALID_THEMES) &&
+    !containsTheme(response, INVALID_THEMES)
+  );
 };
 
 // Servicio principal para manejar la interacción con el chatbot

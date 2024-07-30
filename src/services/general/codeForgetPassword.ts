@@ -8,7 +8,9 @@ import { generateTemCode } from '@helpers/generateTemCode';
 import { saveCodeToRedis } from '@helpers/redis/saveCode';
 import { sendCodeForgetPassword } from '@helpers/mail/sendCodeForgetPassword';
 
-export const codeForgetPasswordService = async (user: codeForgetPasswordDto) => {
+export const codeForgetPasswordService = async (
+  user: codeForgetPasswordDto,
+) => {
   const result: [codeForget[][], FieldPacket[]] =
     await getCodeForgetRepository.searchUserCode(user);
 
@@ -19,7 +21,7 @@ export const codeForgetPasswordService = async (user: codeForgetPasswordDto) => 
   }
 
   const code = await generateTemCode().catch((hashError) => {
-    console.log(hashError);
+    console.error(hashError);
     throw new Error(ERROR_MESSAGE.GENERATE_CODE_ERROR);
   });
 
@@ -29,7 +31,7 @@ export const codeForgetPasswordService = async (user: codeForgetPasswordDto) => 
     code: code.code,
   };
 
-  console.log(temCode.code);
+  console.error(temCode.code);
 
   await saveCodeToRedis(temCode).catch((saveError) => {
     console.error(saveError);

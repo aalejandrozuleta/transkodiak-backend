@@ -5,8 +5,6 @@ import { intermediaryFindByName } from '@services/intermediary/interface/interme
 
 export default class RegisterRepository {
   static async registerIntermediary(userData: RegisterDto) {
-    console.log(userData);
-
     const sql = 'CALL InsertIntermediary(?,?,?,?,?)';
     const values = [
       userData.name,
@@ -21,6 +19,8 @@ export default class RegisterRepository {
   static async findIntermediaryByName(userData: RegisterDto) {
     const sql = 'CALL SearchIntermediaryByName(?)';
     const values = [userData.name];
-    return db.execute(sql, values) as Promise<[intermediaryFindByName[], FieldPacket[]]>;
+    return db.execute(sql, values) as Promise<
+      [intermediaryFindByName[], FieldPacket[]]
+    >;
   }
 }

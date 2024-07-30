@@ -4,7 +4,12 @@ export class forgetPasswordDto {
   private _password_user: string;
   private _code: string;
 
-  constructor(id_user: number, email: string, password_user: string, code: string) {
+  constructor(
+    id_user: number,
+    email: string,
+    password_user: string,
+    code: string,
+  ) {
     this._id_user = id_user;
     this._email = email;
     this._password_user = password_user;

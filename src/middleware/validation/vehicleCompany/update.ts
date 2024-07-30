@@ -1,7 +1,6 @@
-import { body, param, ValidationChain } from 'express-validator';
+import { body, ValidationChain } from 'express-validator';
 
 const updateValidator: ValidationChain[] = [
-
   body('name')
     .optional()
     .isAlpha()
@@ -26,7 +25,7 @@ const updateValidator: ValidationChain[] = [
   body('address')
     .optional()
     .isLength({ min: 10, max: 100 })
-    .withMessage('Dirección debe tener entre 10 y 100 caracteres')
+    .withMessage('Dirección debe tener entre 10 y 100 caracteres'),
 ];
 
 export { updateValidator };

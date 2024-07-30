@@ -7,7 +7,9 @@ import { authService } from '@services/general/auth';
 export const authController = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array().map((err) => err.msg) });
+    return res
+      .status(400)
+      .json({ errors: errors.array().map((err) => err.msg) });
   }
   const userData: authInterface = req.body;
   const user = new AuthDto(userData.email, userData.password);

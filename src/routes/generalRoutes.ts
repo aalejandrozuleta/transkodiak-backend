@@ -31,7 +31,11 @@ routerGeneral.post('/auth', authValidator, authController);
  * @access Público
  */
 
-routerGeneral.post('/getCode', userValidationCode, codeForgetPasswordController);
+routerGeneral.post(
+  '/getCode',
+  userValidationCode,
+  codeForgetPasswordController,
+);
 
 /**
  * @route PUT / cambiar clave

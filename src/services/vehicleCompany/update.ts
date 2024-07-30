@@ -1,4 +1,3 @@
-// services/vehicleCompany/update.ts
 import UpdateDto from '@dto/vehicleCompany/update';
 import { updateVehicleCompany } from '@repositories/vehicleCompany/update';
 import { ERROR_MESSAGE } from './utils/messagesError';
@@ -11,7 +10,7 @@ export const updateService = async (userId: string, userData: UpdateDto) => {
       throw new Error(ERROR_MESSAGE.NOT_FOUND);
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new Error(ERROR_MESSAGE.DB_ERROR);
   }
 };
