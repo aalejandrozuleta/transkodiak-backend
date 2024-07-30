@@ -1,7 +1,7 @@
+import { chatMessageInterface } from "@interfaces/general/chatMessageBot";
 import chatBotConfig from '@config/chatBot';
 import chatBotDto from '@dto/general/chatBot';
-
-import { GoogleGenerativeAI, Content, Part } from '@google/generative-ai';
+import { GoogleGenerativeAI, Content } from '@google/generative-ai';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,34 +15,39 @@ export const chatBotService = async (chatBot: chatBotDto) => {
   // Transformar los datos de chatMessageInterface a Content
   let historyChat: Content[] = START_CHAT.concat(chatBot.history)
     .map((msg) => {
-      // Verificar que 'role' esté definido y sea válido
       if (msg.role && ['user', 'model'].includes(msg.role)) {
         return {
           role: msg.role,
-          parts: [{ text: msg.parts }], // Asumiendo que Part tiene una propiedad 'text'
-        } as Content; // Aseguramos que el tipo sea Content
+          parts: [{ text: msg.parts }],
+        } as Content;
       } else {
         console.error('Mensaje inválido en history:', msg);
-        return undefined; // Retornamos undefined para eliminar este mensaje
+        return undefined;
       }
     })
     .filter((msg): msg is Content => msg !== undefined);
 
-  console.log(historyChat);
-
-  const chat = model.startChat({
-    history: historyChat,
-    generationConfig: GENERATION_CONFIG,
+  // Añadir solo la pregunta del usuario al historial para generar la respuesta
+  historyChat.push({
+    role: 'user',
+    parts: [{ text: chatBot.question }]
   });
 
-  console.log(chat);
+  try {
+    const chat = model.startChat({
+      history: historyChat,
+      generationConfig: GENERATION_CONFIG,
+    });
 
-  const sendQuestion = await chat.sendMessage(chatBot.question);
-  const response = sendQuestion.response;
-  const text = response.text();
+    const sendQuestion = await chat.sendMessage(chatBot.question);
+    const response = sendQuestion.response;
+    const text = response.text(); // Esperar el texto
 
-  historyChat.push({ role: 'user', parts: [{ text: chatBot.question }] });
-  historyChat.push({ role: 'model', parts: [{ text }] });
+    // Solo devolver la respuesta del modelo y no todo el historial
+    return { response: text };
 
-  return { history: historyChat };
+  } catch (error) {
+    console.error('Error en el envío del mensaje:', error);
+    throw error; // Re-lanzar el error para que sea manejado en el controlador
+  }
 };
