@@ -1,31 +1,27 @@
-import RegisterDto from '@dto/transporter/register';
-import { createTransporter } from '@interfaces/transpoter/createTransporter';
 import { validationResult } from 'express-validator';
+import { changePasswordInterface } from './../../interfaces/vehicleCompany/changePassword';
+import ChangePasswordDto from '@dto/vehicleCompany/changePassword';
 import { Request, Response } from 'express';
-import { registerService } from '@services/transporter/register';
+import { changePasswordService } from '@services/vehicleCompany/changePassword';
 
-export const registerController = async (req: Request, res: Response) => {
+export const changePassword = async (req: Request, res: Response) => {
   // validaciones de los datos
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array().map((err) => err.msg) });
   }
 
-  const userData: createTransporter = req.body;
+  const userData: changePasswordInterface = req.body;
 
-  const user = new RegisterDto(
-    userData.name,
-    userData.idNumber,
-    userData.email,
-    userData.phone,
-    userData.license,
-    userData.password,
-    userData.idVehicle,
+  const user = new ChangePasswordDto(
+    userData.userId,
+    userData.currentPassword,
+    userData.newPassword,
   );
 
   try {
-    await registerService(user);
-    res.status(201).json({ message: 'Transportador registrado exitosamente' });
+    await changePasswordService(user);
+    res.status(200).json({ message: 'Contraseña cambiada exitosamente' });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {

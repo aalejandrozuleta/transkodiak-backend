@@ -8,9 +8,7 @@ import { generateTemCode } from '@helpers/generateTemCode';
 import { saveCodeToRedis } from '@helpers/redis/saveCode';
 import { sendCodeForgetPassword } from '@helpers/mail/sendCodeForgetPassword';
 
-export const codeForgetPasswordService = async (
-  user: codeForgetPasswordDto,
-) => {
+export const codeForgetPasswordService = async (user: codeForgetPasswordDto) => {
   const result: [codeForget[][], FieldPacket[]] =
     await getCodeForgetRepository.searchUserCode(user);
 
@@ -32,7 +30,7 @@ export const codeForgetPasswordService = async (
   };
 
   console.log(temCode.code);
-  
+
   await saveCodeToRedis(temCode).catch((saveError) => {
     console.error(saveError);
     throw new Error(ERROR_MESSAGE.SAVE_CODE_REDIS_ERROR);

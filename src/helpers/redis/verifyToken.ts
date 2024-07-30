@@ -1,8 +1,4 @@
-import jwt, {
-  JsonWebTokenError,
-  NotBeforeError,
-  TokenExpiredError,
-} from 'jsonwebtoken';
+import jwt, { JsonWebTokenError, NotBeforeError, TokenExpiredError } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { Payload } from '@helpers/interfaces/payload';
 

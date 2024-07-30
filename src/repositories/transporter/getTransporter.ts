@@ -5,8 +5,6 @@ import { FieldPacket } from 'mysql2';
 export class getTransportersRepository {
   static async getTransporter() {
     const sql = 'CALL getTransporters()';
-    return db.execute(sql) as Promise<
-      [getTransporterInterface[], FieldPacket[]]
-    >;
+    return db.execute(sql) as Promise<[getTransporterInterface[], FieldPacket[]]>;
   }
 }

@@ -12,12 +12,7 @@ import { registerController } from '@controller/transporter/register';
  * @access Público
  */
 
-routerTransporter.post(
-  '/register',
-  jwtAuthMiddleware,
-  registerValidator,
-  registerController,
-);
+routerTransporter.post('/register', jwtAuthMiddleware, registerValidator, registerController);
 
 //* ----- GET TRANSPORTERS --------------------------------
 
@@ -29,11 +24,7 @@ import { getTransportersController } from '@controller/transporter/getTransporte
  * @access privado (JWT)
  */
 
-routerTransporter.get(
-  '/listTransporters',
-  jwtAuthMiddleware,
-  getTransportersController,
-);
+routerTransporter.get('/listTransporters', jwtAuthMiddleware, getTransportersController);
 
 //* ----- DISABLE TRANSPORTER -----
 
@@ -47,9 +38,4 @@ import { disableValidator } from '@middleware/validation/transporter/disable';
  *
  */
 
-routerTransporter.put(
-  '/disable/:id',
-  jwtAuthMiddleware,
-  disableValidator,
-  disableController,
-);
+routerTransporter.put('/disable/:id', jwtAuthMiddleware, disableValidator, disableController);

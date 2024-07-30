@@ -14,9 +14,7 @@ const userValidationCode: ValidationChain[] = [
     .notEmpty()
     .withMessage('Teléfono es requerido')
     .matches(/^3\d{9}$/)
-    .withMessage(
-      'Teléfono debe ser numérico, tener 10 dígitos y comenzar con 3',
-    ),
+    .withMessage('Teléfono debe ser numérico, tener 10 dígitos y comenzar con 3'),
 ];
 
 const validateUser = (date: getCodeForgetInterface) => {
