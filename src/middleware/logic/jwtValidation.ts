@@ -3,18 +3,12 @@ import { verifyToken } from '@helpers/redis/verifyToken';
 import { getTokenFromRedis } from '@helpers/redis/getTokenFromRedis';
 import { Payload } from '@helpers/interfaces/payload';
 
-export const jwtAuthMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const jwtAuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const authorization = req.get('Authorization');
 
     if (!authorization) {
-      return res
-        .status(401)
-        .json({ status: 'Authorization header is missing' });
+      return res.status(401).json({ status: 'Authorization header is missing' });
     }
 
     const token: string = authorization.split(' ')[1];

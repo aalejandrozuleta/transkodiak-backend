@@ -7,9 +7,7 @@ import { forgetPasswordService } from '@services/general/forgetPassword';
 export const forgetPasswordController = async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res
-      .status(400)
-      .json({ errors: errors.array().map((err) => err.msg) });
+    return res.status(400).json({ errors: errors.array().map((err) => err.msg) });
   }
   const userData: forgetPasswordInterface = req.body;
 

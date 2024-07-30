@@ -20,8 +20,7 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   }
 
   // Buscar el usuario en la base de datos
-  const credentials: authGeneral[] =
-    await AuthRepository.authenticateUser(user);
+  const credentials: authGeneral[] = await AuthRepository.authenticateUser(user);
 
   // Verificar si el usuario existe
   if (credentials.length === 0) {
@@ -36,13 +35,12 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   userData.user_type = ''; //depende la tabla de donde lo saque
 
   // revisar la contraseña del usuario
-  const isPasswordValid = await comparePassword(
-    user.password,
-    credentials[0].password,
-  ).catch((hashError) => {
-    console.log(hashError);
-    throw new Error(ERROR_MESSAGE.CREDENTIALS);
-  });
+  const isPasswordValid = await comparePassword(user.password, credentials[0].password).catch(
+    (hashError) => {
+      console.log(hashError);
+      throw new Error(ERROR_MESSAGE.CREDENTIALS);
+    },
+  );
 
   // Si la contraseña no es válida, incrementar el número de intentos fallidos
   if (!isPasswordValid) {

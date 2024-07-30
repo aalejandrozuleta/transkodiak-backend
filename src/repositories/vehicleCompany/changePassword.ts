@@ -1,9 +1,7 @@
-import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import ChangePasswordDto from '@dto/vehicleCompany/changePassword';
 
 export default class ChangePasswordRepository {
-
   static async getPassword(user: ChangePasswordDto) {
     const sql = 'CALL UpdatePasswordVehicle(?)';
     const values = [user.idUser];
@@ -16,4 +14,3 @@ export default class ChangePasswordRepository {
     return db.execute(sql, values);
   }
 }
-

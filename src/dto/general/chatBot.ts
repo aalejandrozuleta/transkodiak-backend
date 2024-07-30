@@ -1,4 +1,4 @@
-import { chatMessageInterface } from "@interfaces/general/chatMessageBot";
+import { chatMessageInterface } from '@interfaces/general/chatMessageBot';
 
 export default class chatBotDto {
   private _history: chatMessageInterface[];

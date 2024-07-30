@@ -1,8 +1,6 @@
 import { client } from '@config/redis';
 
-export const getTokenFromRedis = async (
-  email: string,
-): Promise<string | null> => {
+export const getTokenFromRedis = async (email: string): Promise<string | null> => {
   try {
     const token = await client.get(`token:${email}`);
     return token;

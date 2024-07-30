@@ -10,7 +10,7 @@ const authValidator: ValidationChain[] = [
     .isLength({ min: 5, max: 50 })
     .withMessage('Correo electrónico debe tener entre 5 y 50 caracteres'),
 
-    body('password')
+  body('password')
     .notEmpty()
     .withMessage('Contraseña es requerida')
     .isLength({ min: 8, max: 255 })

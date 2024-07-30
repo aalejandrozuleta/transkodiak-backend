@@ -41,9 +41,6 @@ checkDatabaseConnection()
     });
   })
   .catch((error) => {
-    console.error(
-      'No se pudo iniciar el servidor debido a un error en la base de datos:',
-      error,
-    );
+    console.error('No se pudo iniciar el servidor debido a un error en la base de datos:', error);
   });
 export default app;

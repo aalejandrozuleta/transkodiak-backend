@@ -2,13 +2,9 @@ import { getTransporterInterface } from '@interfaces/transpoter/getTransporter';
 import { getTransporterService } from '@services/transporter/getTransporter';
 import { Request, Response } from 'express';
 
-export const getTransportersController = async (
-  req: Request,
-  res: Response,
-) => {
+export const getTransportersController = async (req: Request, res: Response) => {
   try {
-    const transporters: getTransporterInterface[] =
-      await getTransporterService();
+    const transporters: getTransporterInterface[] = await getTransporterService();
     res.status(201).json({
       message: 'Transportadores conseguidos con éxito',
       transporters: transporters[0],

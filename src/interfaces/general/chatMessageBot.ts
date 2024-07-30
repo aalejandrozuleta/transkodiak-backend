@@ -1,4 +1,4 @@
 export interface chatMessageInterface {
-  role: "user" | "model";
+  role: 'user' | 'model';
   parts: string;
 }
