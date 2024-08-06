@@ -18,43 +18,102 @@ const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 // Definición de temas permitidos y no permitidos
 const VALID_THEMES = [
   'camiones',
-  'mercancías ',
-  'transporte ',
+  'mercancías',
+  'transporte',
   'logística',
   'regulaciones',
   'peajes',
   'ciudades',
-  'Ganado',
-  'Misión',
-  'Vision',
-  'Descripción General',
-  'Fecha de Creación',
-  'Colombia',
-  'Carro',
-  'Combustible',
-  'Automóvil',
-  'Transporte público',
-  'Transporte privado',
+  'ganado',
+  'misión',
+  'visión',
+  'descripción general',
+  'fecha de creación',
+  'colombia',
+  'carro',
+  'combustible',
+  'automóvil',
+  'transporte público',
+  'transporte privado',
   'carga',
   'peso',
   'flete',
   'promedio',
   'conductores',
-  'conductore',
-  // Puedes añadir más temas permitidos aquí
+  'mantenimiento',
+  'seguridad vial',
+  'tecnología',
+  'innovación',
+  'sostenibilidad',
+  'infraestructura',
+  'rutas',
+  'distancia',
+  'tiempo de entrega',
+  'eficiencia',
+  'costos',
+  'clientes',
+  'servicio',
+  'experiencia del cliente',
+  'gestión de flotas',
+  'GPS',
+  'rastreo',
+  'entregas',
+  'depósitos',
+  'almacenes',
+  'centros de distribución',
+  'logística inversa',
+  'flujos de trabajo',
+  'optimización',
+  'automatización',
+  'normativas',
+  'cumplimiento',
+  'requisitos',
+  'adquisiciones',
+  'contratos',
+  'proveedores',
+  'subcontratistas',
+  'puntos de carga',
+  'estaciones de servicio',
 ];
 
 const INVALID_THEMES = [
-  'religion',
+  'religión',
   'violencia',
   'discriminación',
-  'Países',
-  // Puedes añadir más temas no permitidos aquí
+  'países',
+  'política',
+  'ideologías',
+  'guerra',
+  'crimen',
+  'armas',
+  'drogas',
+  'sexo',
+  'racismo',
+  'intolerancia',
+  'extremismo',
+  'terrorismo',
+  'pandemias',
+  'enfermedades graves',
+  'desastres naturales',
+  'temas tabú',
+  'ofensas personales',
+  'bullying',
+  'acoso',
+  'privacidad',
+  'datos sensibles',
+  'información confidencial',
+  'masacre',
+  'Dios',
+  'Jesus',
+  'Joab',
+  'hoy',
+  'futuro',
+  'pasado',
 ];
 
 // Función para verificar si el texto contiene alguno de los temas especificados
 const containsTheme = (text: string, themes: string[]): boolean => {
-  return themes.some((theme) => text.toLowerCase().includes(theme.toLowerCase()));
+  return themes.some((theme) => new RegExp(`\\b${theme}\\b`, 'i').test(text));
 };
 
 // Función para validar si la respuesta generada es válida según los temas permitidos y no permitidos
@@ -86,6 +145,7 @@ export const chatBotService = async (chatBot: chatBotDto) => {
   });
 
   try {
+    const condition = ' La información brindada debe basarse en Colombia ';
     // Inicio de la conversación con el modelo de IA generativa
     const chat = model.startChat({
       history: historyChat,
@@ -93,7 +153,7 @@ export const chatBotService = async (chatBot: chatBotDto) => {
     });
 
     // Envío de la pregunta del usuario y obtención de la respuesta
-    const sendQuestion = await chat.sendMessage(chatBot.question);
+    const sendQuestion = await chat.sendMessage(chatBot.question + condition);
     const response = sendQuestion.response;
     const text = response.text(); // Esperar el texto
 

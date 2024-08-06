@@ -2,11 +2,11 @@ import { chatMessageInterface } from '@interfaces/general/chatMessageBot';
 
 const GENERATION_CONFIG = {
   stopSequences: ['red'],
-  maxOutputTokens: 1000,
-  temperature: 0.9,
-  topP: 0.1,
-  topK: 16,
-};
+  maxOutputTokens: 350,  // Reducimos el número máximo de tokens de salida
+  temperature: 0.7,     // Bajamos la temperatura para respuestas más concretas
+  topP: 0.9,            // Ajustamos topP para mayor precisión en las respuestas
+  topK: 10,             // Bajamos topK para limitar la aleatoriedad
+}
 const START_CHAT: chatMessageInterface[] = [
   {
     role: 'user',

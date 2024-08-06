@@ -1,8 +1,7 @@
 {
-    "name": "Andres",
-    "email": "contacto@transporte.com",
-    "phone": "3135749575",
-    "address": "Veracruz manzana 25 casa 11",
-    "password": "Password1!"
-  }
-  
+  "name": "Andres",
+  "email": "contacto@transporte.com",
+  "phone": "3135749575",
+  "address": "Veracruz manzana 25 casa 11",
+  "password": "Password1!"
+}
