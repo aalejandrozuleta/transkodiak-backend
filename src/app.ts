@@ -10,12 +10,14 @@ import { routerVehicleCompany } from '@routes/vehicleCompanyRoutes';
 import { routerIntermediary } from '@routes/IntermediaryRoutes';
 import { routerTransporter } from '@routes/transporterRoutes';
 import { routerGeneral } from '@routes/generalRoutes';
+import { routerVehicle } from '@routes/vehicleRoutes';
 
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
 app.use('/api/intermediary', routerIntermediary);
 app.use('/api/transporter', routerTransporter);
 app.use('/api/general', routerGeneral);
+app.use('/api/vehicle', routerVehicle);
 
 // Error handling
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
