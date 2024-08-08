@@ -5,12 +5,14 @@ import { FieldPacket } from 'mysql2';
 
 export default class createVehicleRepository {
   static async createVehicle(vehicleData: CreateVehicleDto) {
-    const sql = 'CALL InsertVehicle(?,?,?,?)';
+    const sql = 'CALL InsertVehicle(?,?,?,?,?,?)';
     const values = [
       vehicleData.license_plate,
       vehicleData.capacity,
       vehicleData.vehicle_type,
       vehicleData.load_type,
+      vehicleData.model,
+      vehicleData.brand,
     ];
     return db.execute(sql, values);
   }
