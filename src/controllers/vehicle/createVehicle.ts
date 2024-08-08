@@ -21,6 +21,8 @@ export const createVehicleController = async (req: Request, res: Response) => {
     vehicleData.capacity,
     vehicleData.vehicle_type,
     vehicleData.load_type,
+    vehicleData.model,
+    vehicleData.brand,
   );
 
   try {
