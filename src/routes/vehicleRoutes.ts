@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 export const routerVehicle: Router = express.Router();
+import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
 //* ----- CREATE VEHICLE-----
 import { createValidator } from '@middleware/validation/vehicle/createVehicle';
@@ -11,4 +12,4 @@ import { createVehicleController } from '@controller/vehicle/createVehicle';
  * @access Público
  */
 
-routerVehicle.post('/createVehicle', createValidator, createVehicleController);
+routerVehicle.post('/createVehicle',jwtAuthMiddleware, createValidator, createVehicleController);
