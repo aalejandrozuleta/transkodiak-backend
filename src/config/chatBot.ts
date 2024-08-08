@@ -1,35 +1,42 @@
 import { chatMessageInterface } from '@interfaces/general/chatMessageBot';
 
 const GENERATION_CONFIG = {
-  stopSequences: ['red'],
-  maxOutputTokens: 350,  // Reducimos el número máximo de tokens de salida
-  temperature: 0.7,     // Bajamos la temperatura para respuestas más concretas
-  topP: 0.9,            // Ajustamos topP para mayor precisión en las respuestas
-  topK: 10,             // Bajamos topK para limitar la aleatoriedad
-}
+  stopSequences: ['red'], // Ajustar si se necesita una secuencia específica para detener la generación
+  maxOutputTokens: 350, // Limitar tokens para respuestas más concisas
+  temperature: 0.7, // Ajustar para respuestas balanceadas entre creatividad y coherencia
+  topP: 0.9, // Mantener un buen nivel de precisión en respuestas
+  topK: 10, // Limitar la aleatoriedad para mayor precisión
+};
+
 const START_CHAT: chatMessageInterface[] = [
   {
     role: 'user',
-    parts: `Nombre de la Empresa: Café VIP
-  
-        Misión: En Café VIP, nos dedicamos a ofrecer a nuestros clientes una experiencia excepcional de café artesanal. Nos esforzamos por proporcionar la más alta calidad en cada taza, desde la selección de granos hasta el proceso de preparación, con un enfoque en la excelencia, la sostenibilidad y la satisfacción del cliente.
-        
-        Visión: Nos visualizamos como líderes en la industria del café artesanal, reconocidos por nuestra dedicación a la calidad, la innovación y el servicio al cliente. Buscamos expandir nuestra presencia a nivel nacional e internacional, manteniendo siempre nuestros estándares de excelencia y compromiso con la comunidad y el medio ambiente.
-        
-        Fecha de Creación: Café VIP fue fundado en el año 2015 por un grupo de amantes del café con una pasión compartida por la calidad y la autenticidad en cada taza.
-        
-        Descripción General:
-        Café VIP se distingue por su compromiso con el café de alta calidad y su enfoque en el arte de la preparación. Nuestros granos son cuidadosamente seleccionados de las regiones cafetaleras más prestigiosas del mundo, y nuestro equipo de expertos baristas se dedica a perfeccionar cada técnica para ofrecer una experiencia sensorial única a nuestros clientes.
-        
-        Nuestro compromiso con la sostenibilidad se refleja en nuestras prácticas comerciales, desde la relación directa con los productores de café hasta la utilización de métodos de cultivo y procesamiento responsables. Además, nos esforzamos por contribuir positivamente a las comunidades locales donde operamos, apoyando iniciativas sociales y ambientales que promuevan el bienestar y el desarrollo sostenible.
-        
-        Café VIP ofrece una amplia variedad de productos, que van desde café tostado y molido hasta bebidas especializadas y accesorios para café. Nuestras tiendas están diseñadas para brindar un ambiente acogedor y sofisticado, donde los clientes pueden disfrutar de su café favorito mientras se sumergen en una experiencia sensorial única.
-        
-        Nuestra pasión por el café se refleja en cada aspecto de nuestro negocio, desde la selección de ingredientes hasta la atención al cliente. En Café VIP, estamos comprometidos a superar las expectativas de nuestros clientes y a convertir cada visita en una experiencia memorable.`,
+    parts: `
+    **Nombre de la Empresa:** Transkodiak
+
+    **Cómo crear un transportador:**
+    1. Regístrate como empresa vehicular o inicia sesión.
+    2. Dirígete al menú y selecciona "Transportadores".
+    3. Completa la información requerida del transportador.
+    4. Guarda los datos del transportador.
+    5. Visualiza el transportador en la tabla de usuarios.
+
+    **Cómo registrarme como empresa vehicular:**
+    1. Ingresa a registrarte en la parte superior izquierda.
+    2. Selecciona la opción "Empresa Vehicular".
+    3. Ingresa los datos solicitados.
+    4. Guarda los datos ingresados.
+
+    **Cómo registrarme como empresa intermediaria:**
+    1. Ingresa a registrarte en la parte superior izquierda.
+    2. Selecciona la opción "Empresa Intermediaria".
+    3. Ingresa los datos solicitados.
+    4. Guarda los datos ingresados.
+    `,
   },
   {
     role: 'model',
-    parts: 'Genial empresa!',
+    parts: '¡Genial, empresa Transkodiak!',
   },
 ];
 
