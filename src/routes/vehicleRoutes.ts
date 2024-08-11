@@ -4,7 +4,7 @@ import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
 //* ----- CREATE VEHICLE-----
 import { createValidator } from '@middleware/validation/vehicle/createVehicle';
-import { createVehicleController } from '@controller/vehicle/createVehicle';
+import { CreateVehicleController } from '@controller/vehicle/createVehicle';
 
 /**
  * @route POST /register
@@ -12,4 +12,4 @@ import { createVehicleController } from '@controller/vehicle/createVehicle';
  * @access Público
  */
 
-routerVehicle.post('/createVehicle',jwtAuthMiddleware, createValidator, createVehicleController);
+routerVehicle.post('/createVehicle',jwtAuthMiddleware, createValidator, CreateVehicleController);

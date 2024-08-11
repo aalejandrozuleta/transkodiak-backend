@@ -21,6 +21,7 @@ export default class createVehicleRepository {
   static async findVehicleByPlate(vehicleData: CreateVehicleDto) {
     const sql = 'CALL SearchVehicleByPlate(?)';
     const values = [vehicleData.license_plate];
-    return db.execute(sql, values) as Promise<[VehicleFindByPlate[], FieldPacket[]]>;
+    return db.execute(sql, values) as Promise<
+    [VehicleFindByPlate[], FieldPacket[]]>;
   }
 }

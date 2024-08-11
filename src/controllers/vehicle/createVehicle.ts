@@ -1,12 +1,11 @@
-import CreateVehicleDto from '@dto/vehicle/createVehicle';
 import { createVehicle } from '@interfaces/vehicle/createVehicle';
 import { validationResult } from 'express-validator';
 import { Request, Response } from 'express';
 import { createVehicleService } from '@services/vehicle/createVehicle';
-import { ERROR_MESSAGE } from '@services/vehicle/utils/messageError';
+import CreateVehicleDto from '@dto/vehicle/createVehicle';
 
-export const createVehicleController = async (req: Request, res: Response) => {
-  // Validaciones de los datos
+export const CreateVehicleController = async (req: Request, res: Response) => {
+  // validaciones de los datos
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
@@ -14,33 +13,32 @@ export const createVehicleController = async (req: Request, res: Response) => {
       .json({ errors: errors.array().map((err) => err.msg) });
   }
 
-  const vehicleData: createVehicle = req.body;
+  const vehData: createVehicle = req.body;
 
-  const vehicle = new CreateVehicleDto(
-    vehicleData.license_plate,
-    vehicleData.capacity,
-    vehicleData.vehicle_type,
-    vehicleData.load_type,
-    vehicleData.model,
-    vehicleData.brand,
-    vehicleData.idCompany,
+  const vehicle = new CreateVehicleDto (
+    vehData.license_plate,
+    vehData.capacity,
+    vehData.vehicle_type,
+    vehData.load_type,
+    vehData.model,
+    vehData.brand,
+    vehData.idCompany,
   );
-
-
-  // Verifica que todos los valores estén definidos
-  console.log(vehicle);
 
   try {
     await createVehicleService(vehicle);
-    res.status(201).json({ message: 'Vehículo registrado exitosamente' });
+    res.status(201).json({ message: 'Vehiculo registrado exitosamente' });
   } catch (error) {
+    // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {
-      if (error.message === ERROR_MESSAGE.EXISTING_PLATE) {
-        return res.status(400).json({ error: 'El vehiculo ya existe' });
-      }
-      res.status(500).json({ error: error.message });
+      res.status(500).json({
+        error: error.message,
+      });
     } else {
-      res.status(500).json({ error: 'Ocurrió un error desconocido' });
+      // Si el error no es una instancia de Error, manejar el caso
+      res.status(500).json({
+        error: 'Ocurrió un error desconocido',
+      });
     }
   }
 };
