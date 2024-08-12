@@ -3,11 +3,11 @@ import { getTransportersRepository } from '@repositories/transporter/getTranspor
 import { ERROR_MESSAGE } from './utils/messagesError';
 import { FieldPacket } from 'mysql2';
 
-export const getTransporterService = async () => {
+export const getTransporterService = async (idCompany:string) => {
   try {
     // Llamamos al método getTransporter del repositorio y obtenemos el resultado
     const [result]: [getTransporterInterface[], FieldPacket[]] =
-      await getTransportersRepository.getTransporter();
+      await getTransportersRepository.getTransporter(idCompany);
 
     // Retornamos el resultado
     return result;

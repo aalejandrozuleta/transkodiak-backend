@@ -7,8 +7,10 @@ export const getTransportersController = async (
   res: Response,
 ) => {
   try {
+    const idCompany = req.body.token.id;
+
     const transporters: getTransporterInterface[] =
-      await getTransporterService();
+      await getTransporterService(idCompany);
     res.status(201).json({
       message: 'Transportadores conseguidos con éxito',
       transporters: transporters[0],
