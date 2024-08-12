@@ -6,4 +6,3 @@ export interface createTransporter {
   license: string;
   password: string;
 }
-// borrar

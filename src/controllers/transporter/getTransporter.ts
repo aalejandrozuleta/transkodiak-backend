@@ -7,14 +7,14 @@ export const getTransportersController = async (
   res: Response,
 ) => {
   try {
+    const idCompany = req.body.token.id;
+
     const transporters: getTransporterInterface[] =
-      await getTransporterService();
-    res
-      .status(201)
-      .json({
-        message: 'Transportadores conseguidos con éxito',
-        transporters: transporters[0],
-      });
+      await getTransporterService(idCompany);
+    res.status(201).json({
+      message: 'Transportadores conseguidos con éxito',
+      transporters: transporters[0],
+    });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
     if (error instanceof Error) {
