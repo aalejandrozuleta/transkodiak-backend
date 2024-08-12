@@ -5,5 +5,10 @@ export interface createTransporter {
   phone: string;
   license: string;
   password: string;
+<<<<<<< HEAD
 }
 // borrar
+=======
+  idVehicle: string;
+}
+>>>>>>> main

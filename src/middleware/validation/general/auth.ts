@@ -15,7 +15,7 @@ const authValidator: ValidationChain[] = [
     .withMessage('Contraseña es requerida')
     .isLength({ min: 8, max: 255 })
     .withMessage('Contraseña debe tener entre 8 y 255 caracteres')
-    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/)
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\s\S])/)
     .withMessage(
       'Contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial',
     ),

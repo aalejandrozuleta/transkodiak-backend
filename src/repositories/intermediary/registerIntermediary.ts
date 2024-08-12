@@ -5,8 +5,6 @@ import { intermediaryFindByName } from '@services/intermediary/interface/interme
 
 export default class RegisterRepository {
   static async registerIntermediary(userData: RegisterDto) {
-    console.log(userData);
-
     const sql = 'CALL InsertIntermediary(?,?,?,?,?)';
     const values = [
       userData.name,

@@ -7,7 +7,11 @@ export const getTokenCode = async (email: string) => {
       // Deserializar el JSON a un objeto
       return JSON.parse(data as string);
     } else {
+<<<<<<< HEAD
       console.log(
+=======
+      console.error(
+>>>>>>> main
         'No se encontró ningún dato para el correo electrónico proporcionado.',
       );
       return null;

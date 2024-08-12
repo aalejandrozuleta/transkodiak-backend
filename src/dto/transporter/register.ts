@@ -5,6 +5,7 @@ export default class RegisterDto {
   private _phone: string;
   private _license: string;
   private _password: string;
+  private _idVehicle: string;
 
   constructor(
     name: string,
@@ -13,6 +14,7 @@ export default class RegisterDto {
     phone: string,
     license: string,
     password: string,
+    idVehicle: string,
   ) {
     this._name = name;
     this._idNumber = idNumber;
@@ -20,6 +22,7 @@ export default class RegisterDto {
     this._phone = phone;
     this._license = license;
     this._password = password;
+    this._idVehicle = idVehicle;
   }
 
   /**
@@ -71,10 +74,30 @@ export default class RegisterDto {
   }
 
   /**
+<<<<<<< HEAD
+=======
+   * Getter idVehicle
+   * @return {string}
+   */
+  public get idVehicle(): string {
+    return this._idVehicle;
+  }
+
+  /**
+   * Setter name
+>>>>>>> main
    * @param {string} value
    */
   public set name(value: string) {
     this._name = value;
+  }
+
+  /**
+   * Setter idNumber
+   * @param {string} value
+   */
+  public set idNumber(value: string) {
+    this._idNumber = value;
   }
 
   /**
@@ -108,5 +131,12 @@ export default class RegisterDto {
   public set password(value: string) {
     this._password = value;
   }
+
+  /**
+   * Setter idVehicle
+   * @param {string} value
+   */
+  public set idVehicle(value: string) {
+    this._idVehicle = value;
+  }
 }
-// borrar

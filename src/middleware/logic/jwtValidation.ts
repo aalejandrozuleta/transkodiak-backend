@@ -24,6 +24,10 @@ export const jwtAuthMiddleware = async (
 
     const decoded: Payload = verifyToken(token);
     const email = decoded.email;
+<<<<<<< HEAD
+=======
+    const idCompany = decoded.id;
+>>>>>>> main
 
     const tokenFromRedis = await getTokenFromRedis(email);
 
@@ -32,6 +36,10 @@ export const jwtAuthMiddleware = async (
     }
 
     req.body.token = decoded;
+<<<<<<< HEAD
+=======
+    req.body.idCompany = idCompany; 
+>>>>>>> main
 
     next();
   } catch (error) {

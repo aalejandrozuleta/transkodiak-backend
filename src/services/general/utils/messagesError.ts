@@ -10,4 +10,7 @@ export const ERROR_MESSAGE = {
   FORGET_PASSWORD_REDIS_ERROR: 'Error al buscar código en Redis',
   HASH_PASSWORD_FAILED: 'Error al hashear la contraseña',
 };
+<<<<<<< HEAD
 // borrar
+=======
+>>>>>>> main

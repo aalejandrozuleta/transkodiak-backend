@@ -4,5 +4,8 @@
   "semi": true,
   "singleQuote": true,
   "trailingComma": "all",
-  "printWidth": 80
+  "bracketSpacing": true,
+  "printWidth": 80,
+  "arrayElementNewline": true,
+  "quoteProps": "consistent"
 }

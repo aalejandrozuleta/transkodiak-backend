@@ -11,7 +11,11 @@ export async function sendCodeForgetPassword(userEmail: string, code: string) {
 
   try {
     const info: SentMessageInfo = await transporter.sendMail(mailOptions);
+<<<<<<< HEAD
     console.log('Email enviado: ' + info.messageId);
+=======
+    console.info('Email enviado: ' + info.messageId);
+>>>>>>> main
   } catch (error) {
     console.error('Hubo un error al enviar el correo electrónico: ', error);
   }

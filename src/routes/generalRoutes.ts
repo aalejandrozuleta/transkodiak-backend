@@ -14,6 +14,12 @@ import { userValidationCode } from '@middleware/validation/general/codeForgetPas
 //* ----- FORGET PASSWORD ------------------------------------
 import { forgetPasswordController } from '@controller/general/forgetPassword';
 
+<<<<<<< HEAD
+=======
+//* ----- chatBot -------------------------------------
+import { chatBotController } from '@controller/general/chatBot';
+
+>>>>>>> main
 /**
  * @route POST / Auth
  * @description Autenticar un usuario
@@ -41,3 +47,14 @@ routerGeneral.post(
  */
 
 routerGeneral.put('/forgetPassword', forgetPasswordController);
+<<<<<<< HEAD
+=======
+
+/**
+ * @route POST / chatBot
+ * @description Hablar con el chatBot
+ * @access Público
+ */
+
+routerGeneral.post('/chatBot', chatBotController);
+>>>>>>> main

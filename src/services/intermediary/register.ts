@@ -9,7 +9,11 @@ export const registerService = async (userData: RegisterDto) => {
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
     await RegisterRepository.findIntermediaryByName(userData).catch((error) => {
+<<<<<<< HEAD
       console.log(error);
+=======
+      console.error(error);
+>>>>>>> main
       throw new Error(ERROR_MESSAGE.DB_ERROR);
     });
 
@@ -23,7 +27,7 @@ export const registerService = async (userData: RegisterDto) => {
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
     (hashError) => {
-      console.log(hashError);
+      console.error(hashError);
       throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
     },
   );
@@ -33,7 +37,11 @@ export const registerService = async (userData: RegisterDto) => {
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerIntermediary(userData).catch(
     (dbError) => {
+<<<<<<< HEAD
       console.log(dbError);
+=======
+      console.error(dbError);
+>>>>>>> main
       // Capturar error de entrada duplicada y personalizar el mensaje
       if (dbError.code === 'ER_DUP_ENTRY') {
         if (dbError.message.includes('email')) {

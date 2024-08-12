@@ -23,8 +23,11 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   const credentials: authGeneral[] =
     await AuthRepository.authenticateUser(user);
 
+<<<<<<< HEAD
   console.log(credentials);
 
+=======
+>>>>>>> main
   // Verificar si el usuario existe
   if (credentials.length === 0) {
     await incrementFailedAttempts(user.email);
@@ -42,7 +45,11 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
     user.password,
     credentials[0].password,
   ).catch((hashError) => {
+<<<<<<< HEAD
     console.log(hashError);
+=======
+    console.error(hashError);
+>>>>>>> main
     throw new Error(ERROR_MESSAGE.CREDENTIALS);
   });
 

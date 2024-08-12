@@ -37,7 +37,7 @@ checkDatabaseConnection()
   .then(() => {
     const PORT: string | number = process.env.PORT || 8000;
     app.listen(PORT, () => {
-      console.log(`Servidor corriendo en el puerto http://localhost:${PORT}`);
+      console.info(`Servidor corriendo en el puerto http://localhost:${PORT}`);
     });
   })
   .catch((error) => {

@@ -20,7 +20,11 @@ export const registerService = async (userData: RegisterDto) => {
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
     (hashError) => {
+<<<<<<< HEAD
       console.log(hashError);
+=======
+      console.error(hashError);
+>>>>>>> main
       throw new Error(ERROR_MESSAGE.HASH_PASSWORD_FAILED);
     },
   );
@@ -31,7 +35,11 @@ export const registerService = async (userData: RegisterDto) => {
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerTransporter(userData).catch(
     (dbError) => {
+<<<<<<< HEAD
       console.log(dbError);
+=======
+      console.error(dbError);
+>>>>>>> main
       throw new Error(ERROR_MESSAGE.DB_ERROR);
     },
   );

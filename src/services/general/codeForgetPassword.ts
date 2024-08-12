@@ -21,7 +21,11 @@ export const codeForgetPasswordService = async (
   }
 
   const code = await generateTemCode().catch((hashError) => {
+<<<<<<< HEAD
     console.log(hashError);
+=======
+    console.error(hashError);
+>>>>>>> main
     throw new Error(ERROR_MESSAGE.GENERATE_CODE_ERROR);
   });
 
@@ -30,6 +34,12 @@ export const codeForgetPasswordService = async (
     email: user.email,
     code: code.code,
   };
+<<<<<<< HEAD
+=======
+
+  console.error(temCode.code);
+
+>>>>>>> main
   await saveCodeToRedis(temCode).catch((saveError) => {
     console.error(saveError);
     throw new Error(ERROR_MESSAGE.SAVE_CODE_REDIS_ERROR);
