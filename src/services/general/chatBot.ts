@@ -145,7 +145,7 @@ export const chatBotService = async (chatBot: chatBotDto) => {
   });
 
   try {
-    const condition = ' La información brindada debe basarse en Colombia ';
+    const condition = ' La información brindada debe basarse en Colombia, en la respuesta a al pregunta, no vuelvas hacer la pregunta, se lo mas concerto posible ';
     // Inicio de la conversación con el modelo de IA generativa
     const chat = model.startChat({
       history: historyChat,
