@@ -2,10 +2,10 @@ import { chatMessageInterface } from '@interfaces/general/chatMessageBot';
 
 const GENERATION_CONFIG = {
   stopSequences: [],
-  maxOutputTokens: 100, // Limitar tokens para respuestas más concisas
-  temperature: 0.3, // Ajustar para respuestas balanceadas entre creatividad y coherencia
-  topP: 0.8, // Mantener un buen nivel de precisión en respuestas
-  topK: 4, // Limitar la aleatoriedad para mayor precisión
+  maxOutputTokens: 40, // Limitar tokens para respuestas más concisas
+  temperature: 0.1, // Ajustar para respuestas balanceadas entre creatividad y coherencia
+  topP: 0.1, // Mantener un buen nivel de precisión en respuestas
+  topK: 1, // Limitar la aleatoriedad para mayor precisión
 };
 
 const START_CHAT: chatMessageInterface[] = [
