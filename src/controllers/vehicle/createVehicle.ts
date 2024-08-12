@@ -23,7 +23,6 @@ export const createVehicleController = async (req: Request, res: Response) => {
     vehicleData.load_type,
     vehicleData.model,
     vehicleData.brand,
-    vehicleData.idCompany,
   );
 
 

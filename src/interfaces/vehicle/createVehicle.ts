@@ -5,5 +5,4 @@ export interface createVehicle {
   load_type: string;
   model: string;
   brand: string;
-  idCompany:string;
 }
