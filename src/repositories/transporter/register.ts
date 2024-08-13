@@ -2,6 +2,7 @@ import { transporterFindByIdentificationId } from '@services/transporter/interfa
 import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import RegisterDto from '@dto/transporter/register';
+import { searchEmail } from '@interfaces/general/searchEmail';
 
 export default class RegisterRepository {
   static async registerTransporter(userData: RegisterDto) {
@@ -23,5 +24,11 @@ export default class RegisterRepository {
     return db.execute(sql, values) as Promise<
       [transporterFindByIdentificationId[], FieldPacket[]]
     >;
+  }
+
+  static async searchEmail(userData: RegisterDto) {
+    const sql = 'CALL SearchEmail(?)';
+    const values = [userData.email];
+    return db.execute(sql, values) as Promise<[searchEmail[], FieldPacket[]]>;
   }
 }

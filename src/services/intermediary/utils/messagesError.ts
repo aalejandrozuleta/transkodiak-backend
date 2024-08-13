@@ -9,4 +9,6 @@ export const ERROR_MESSAGE = {
   DUPLICATE_NAME: 'El nombre de la empresa ya está en uso.',
   DUPLICATE_PHONE: 'El numero de celular ya está en uso.',
   INHABILITE_USER: 'El transportador no se logra inhabilitar',
+  EXISTING_EMAIL: 'El email esta en uso',
+  EXISTING_NAME: 'El name esta en uso',
 };

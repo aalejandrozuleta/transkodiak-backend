@@ -25,7 +25,6 @@ export const createVehicleController = async (req: Request, res: Response) => {
     vehicleData.brand,
   );
 
-
   // Verifica que todos los valores estén definidos
   console.log(vehicle);
 

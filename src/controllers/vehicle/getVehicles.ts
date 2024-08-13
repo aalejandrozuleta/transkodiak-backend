@@ -2,13 +2,9 @@ import { createVehicle } from '@interfaces/vehicle/createVehicle';
 import { getVehicleService } from '@services/vehicle/getVehicle';
 import { Request, Response } from 'express';
 
-export const getvehiclesController = async (
-  req: Request,
-  res: Response,
-) => {
+export const getvehiclesController = async (req: Request, res: Response) => {
   try {
-    const vehicles: createVehicle[] =
-      await getVehicleService();
+    const vehicles: createVehicle[] = await getVehicleService();
     res.status(201).json({
       message: 'vehiculos conseguidos con exito',
       vehicles: vehicles[0],

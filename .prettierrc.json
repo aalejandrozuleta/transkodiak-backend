@@ -6,6 +6,6 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "printWidth": 80,
-  "arrayElementNewline": true,
-  "quoteProps": "consistent"
+  "quoteProps": "consistent",
+   "endOfLine": "crlf"
 }
