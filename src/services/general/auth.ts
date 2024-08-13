@@ -33,7 +33,7 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   userData.email = user.email;
   userData.id = credentials[0].id;
   userData.password = credentials[0].password;
-  userData.user_type = ''; //depende la tabla de donde lo saque
+  userData.user_type = credentials[0].user_type; //depende la tabla de donde lo saque
 
   // revisar la contraseña del usuario
   const isPasswordValid = await comparePassword(
