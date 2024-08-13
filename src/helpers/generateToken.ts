@@ -6,6 +6,7 @@ dotenv.config();
 export const generateToken = (
   userId: string,
   email: string,
+  name:string,
   user_type: string,
   blockUser: number,
   timeBlock: Date,
@@ -28,6 +29,7 @@ export const generateToken = (
 
   const payload: Payload = {
     id: userId,
+    name:name,
     email: email,
     typeUser: user_type,
     blockUser: blockUser,

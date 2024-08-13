@@ -34,6 +34,7 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   userData.id = credentials[0].id;
   userData.password = credentials[0].password;
   userData.user_type = credentials[0].user_type; //depende la tabla de donde lo saque
+  userData.name = credentials[0].name;
 
   // revisar la contraseña del usuario
   const isPasswordValid = await comparePassword(
@@ -60,6 +61,7 @@ export const authService = async (user: AuthDto, userData: authInterface) => {
   const token = generateToken(
     userData.id,
     userData.email,
+    userData.name,
     userData.user_type,
     userData.blockUser,
     userData.timeBlock,
