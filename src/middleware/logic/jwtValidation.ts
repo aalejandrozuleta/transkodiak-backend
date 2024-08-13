@@ -33,7 +33,7 @@ export const jwtAuthMiddleware = async (
     }
 
     req.body.token = decoded;
-    req.body.idCompany = idCompany; 
+    req.body.idCompany = idCompany;
 
     next();
   } catch (error) {

@@ -2,6 +2,7 @@ import { vehicleCompanyFindByNameInterface } from '@services/vehicleCompany/inte
 import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import RegisterDto from '@dto/vehicleCompany/register';
+import { searchEmail } from '@interfaces/general/searchEmail';
 
 export default class RegisterRepository {
   static async registerVehicleCompany(userData: RegisterDto) {
@@ -23,5 +24,11 @@ export default class RegisterRepository {
     return db.execute(sql, values) as Promise<
       [vehicleCompanyFindByNameInterface[], FieldPacket[]]
     >;
+  }
+
+  static async searchEmail(userData: RegisterDto) {
+    const sql = 'CALL SearchEmail(?)';
+    const values = [userData.email];
+    return db.execute(sql, values) as Promise<[searchEmail[], FieldPacket[]]>;
   }
 }

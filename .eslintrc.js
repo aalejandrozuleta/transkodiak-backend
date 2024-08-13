@@ -20,7 +20,7 @@ module.exports = {
     'no-var': 'error', // Prefiere el uso de let o const en lugar de var
     'prefer-const': 'error', // Prefiere const para variables que no se reasignan
   },
-  ignorePatterns: ['node_modules/', '.dist'], // Ignorar node_modules
+  ignorePatterns: ['node_modules/'], // Ignorar node_modules
   env: {
     node: true, // Especifica que el entorno es Node.js
   },

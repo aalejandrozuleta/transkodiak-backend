@@ -1,3 +1,4 @@
+import { searchEmail } from '@interfaces/general/searchEmail';
 import { FieldPacket } from 'mysql2';
 import db from '@config/mysql';
 import RegisterDto from '@dto/intermediary/registerDto';
@@ -22,5 +23,11 @@ export default class RegisterRepository {
     return db.execute(sql, values) as Promise<
       [intermediaryFindByName[], FieldPacket[]]
     >;
+  }
+
+  static async searchEmail(userData: RegisterDto) {
+    const sql = 'CALL SearchEmail(?)';
+    const values = [userData.email];
+    return db.execute(sql, values) as Promise<[searchEmail[], FieldPacket[]]>;
   }
 }

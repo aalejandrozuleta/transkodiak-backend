@@ -4,8 +4,14 @@ import RegisterDto from '@dto/intermediary/registerDto';
 import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/intermediary/registerIntermediary';
 import { ERROR_MESSAGE } from './utils/messagesError';
+import { searchEmail } from '@interfaces/general/searchEmail';
 
 export const registerService = async (userData: RegisterDto) => {
+  const [existingEmail]: [searchEmail[], FieldPacket[]] =
+    await RegisterRepository.searchEmail(userData).catch((error) => {
+      console.error(error);
+      throw new Error(ERROR_MESSAGE.DB_ERROR);
+    });
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [intermediaryFindByName[], FieldPacket[]] =
     await RegisterRepository.findIntermediaryByName(userData).catch((error) => {
@@ -13,11 +19,17 @@ export const registerService = async (userData: RegisterDto) => {
       throw new Error(ERROR_MESSAGE.DB_ERROR);
     });
 
-  const result = existingName[0];
+  const resultName = existingName[0];
+  const resultEmail = existingEmail[0];
+
+  // si el correo electrónico ya existe, lanzar una excepción
+  if (resultEmail.length > 0) {
+    throw new Error(ERROR_MESSAGE.EXISTING_EMAIL);
+  }
 
   // Si el nombre de la empresa ya existe, lanzar una excepción personalizada
-  if (result.length > 0) {
-    throw new Error(ERROR_MESSAGE.EXISTING);
+  if (resultName.length > 0) {
+    throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
   // Intentar hashear la contraseña

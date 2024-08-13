@@ -14,9 +14,8 @@ import { createVehicleController } from '@controller/vehicle/createVehicle';
 
 routerVehicle.post('/createVehicles', createValidator, createVehicleController);
 
-
 //* ------------------- CONSEGUIR VEHICULOS ------------------
-import { getvehiclesController} from '@controller/vehicle/getVehicles';
+import { getvehiclesController } from '@controller/vehicle/getVehicles';
 
 /**
  * @route GET /transporters
@@ -24,4 +23,4 @@ import { getvehiclesController} from '@controller/vehicle/getVehicles';
  * @access privado (JWT)
  */
 
-routerVehicle.get('/listVehicles',jwtAuthMiddleware, getvehiclesController);
+routerVehicle.get('/listVehicles', jwtAuthMiddleware, getvehiclesController);

@@ -3,8 +3,8 @@ export default class CreateVehicleDto {
   private _capacity: string;
   private _vehicle_type: string;
   private _load_type: string;
-  private _model:string;
-  private _brand:string;
+  private _model: string;
+  private _brand: string;
 
   constructor(
     license_plate: string,
@@ -70,5 +70,4 @@ export default class CreateVehicleDto {
   set brand(value: string) {
     this._brand = value;
   }
-
 }

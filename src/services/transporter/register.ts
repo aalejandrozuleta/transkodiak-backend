@@ -5,15 +5,33 @@ import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/transporter/register';
 import { ERROR_MESSAGE } from './utils/messagesError';
 import { sendWelcomeEmail } from '@helpers/mail/welcome';
+import { searchEmail } from '@interfaces/general/searchEmail';
 
 export const registerService = async (userData: RegisterDto) => {
+  const [existingEmail]: [searchEmail[], FieldPacket[]] =
+    await RegisterRepository.searchEmail(userData).catch((error) => {
+      console.error(error);
+      throw new Error(ERROR_MESSAGE.DB_ERROR);
+    });
+
   // Verificar si ya existe una empresa con el mismo nombre
   const [existingName]: [transporterFindByIdentificationId[], FieldPacket[]] =
-    await RegisterRepository.findTransporterByDocument(userData);
+    await RegisterRepository.findTransporterByDocument(userData).catch(
+      (error) => {
+        console.error(error);
+        throw new Error(ERROR_MESSAGE.DB_ERROR);
+      },
+    );
 
-  const result = existingName[0];
+  const resultName = existingName[0];
+  const resultEmail = existingEmail[0];
 
-  if (result.length > 0) {
+  // si el correo electrónico ya existe, lanzar una excepción
+  if (resultEmail.length > 0) {
+    throw new Error(ERROR_MESSAGE.EXISTING_EMAIL);
+  }
+
+  if (resultName.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
