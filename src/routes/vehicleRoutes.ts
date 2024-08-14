@@ -12,7 +12,12 @@ import { createVehicleController } from '@controller/vehicle/createVehicle';
  * @access Público
  */
 
-routerVehicle.post('/createVehicles', createValidator, createVehicleController);
+routerVehicle.post(
+  '/createVehicle',
+  jwtAuthMiddleware,
+  createValidator,
+  createVehicleController,
+);
 
 //* ------------------- CONSEGUIR VEHICULOS ------------------
 import { getvehiclesController } from '@controller/vehicle/getVehicles';

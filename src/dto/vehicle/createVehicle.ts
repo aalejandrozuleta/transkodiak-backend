@@ -5,6 +5,7 @@ export default class CreateVehicleDto {
   private _load_type: string;
   private _model: string;
   private _brand: string;
+  private _idCompany: string;
 
   constructor(
     license_plate: string,
@@ -13,6 +14,7 @@ export default class CreateVehicleDto {
     load_type: string,
     model: string,
     brand: string,
+    idCompany: string,
   ) {
     this._license_plate = license_plate;
     this._capacity = capacity;
@@ -20,6 +22,7 @@ export default class CreateVehicleDto {
     this._load_type = load_type;
     this._model = model;
     this._brand = brand;
+    this._idCompany = idCompany;
   }
 
   // Getters
@@ -46,6 +49,10 @@ export default class CreateVehicleDto {
   get brand(): string {
     return this._brand;
   }
+
+  get idCompany(): string {
+    return this._idCompany;
+  }
   // Setters
   set license_plate(value: string) {
     this._license_plate = value;
@@ -69,5 +76,9 @@ export default class CreateVehicleDto {
 
   set brand(value: string) {
     this._brand = value;
+  }
+
+  set idCompany(value: string) {
+    this._idCompany = value;
   }
 }

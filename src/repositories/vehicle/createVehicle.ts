@@ -5,7 +5,7 @@ import { FieldPacket } from 'mysql2';
 
 export default class createVehicleRepository {
   static async createVehicle(vehicleData: CreateVehicleDto) {
-    const sql = 'CALL InsertVehicle(?,?,?,?,?,?)';
+    const sql = 'CALL InsertVehicle(?,?,?,?,?,?,?)';
     const values = [
       vehicleData.license_plate,
       parseFloat(vehicleData.capacity), // Asegúrate de que capacity sea un float
@@ -13,6 +13,7 @@ export default class createVehicleRepository {
       vehicleData.load_type,
       vehicleData.model,
       vehicleData.brand,
+      vehicleData.idCompany,
     ];
     return db.execute(sql, values);
   }

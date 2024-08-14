@@ -23,10 +23,8 @@ export const createVehicleController = async (req: Request, res: Response) => {
     vehicleData.load_type,
     vehicleData.model,
     vehicleData.brand,
+    vehicleData.idCompany,
   );
-
-  // Verifica que todos los valores estén definidos
-  console.log(vehicle);
 
   try {
     await createVehicleService(vehicle);

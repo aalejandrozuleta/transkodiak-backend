@@ -6,8 +6,7 @@ export const getvehiclesController = async (req: Request, res: Response) => {
   try {
     const idCompany = req.body.token.id;
 
-    const vehicles: createVehicle[] = 
-      await getVehicleService(idCompany);
+    const vehicles: createVehicle[] = await getVehicleService(idCompany);
     res.status(201).json({
       message: 'vehiculos conseguidos con exito',
       vehicles: vehicles[0],
