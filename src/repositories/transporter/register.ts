@@ -14,7 +14,7 @@ export default class RegisterRepository {
       userData.phone,
       userData.license,
       userData.password,
-      userData.idVehicle,
+      userData.idCompany,
     ];
     return db.execute(sql, values);
   }

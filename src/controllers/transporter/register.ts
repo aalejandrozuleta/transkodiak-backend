@@ -22,7 +22,7 @@ export const registerController = async (req: Request, res: Response) => {
     userData.phone,
     userData.license,
     userData.password,
-    userData.idVehicle,
+    userData.idCompany,
   );
 
   try {
