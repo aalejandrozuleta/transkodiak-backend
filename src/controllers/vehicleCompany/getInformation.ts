@@ -9,7 +9,7 @@ export const getInformationController = async (req: Request, res: Response) => {
     const information: informationVehicleCompany[] =
       await getInformationService(idCompany);
     res.status(201).json({
-      message: 'Informacion conseguida con éxito',
+      message: 'Información conseguida con éxito',
       vehicles: information[0],
     });
   } catch (error) {
