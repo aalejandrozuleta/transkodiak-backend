@@ -26,7 +26,7 @@ export const registerService = async (userData: RegisterDto) => {
   const resultName = existingName[0];
   const resultEmail = existingEmail[0];
 
-  if (resultEmail != null) {
+  if (resultEmail.length > 0) {
     throw new Error(ERROR_MESSAGE.EXISTING_EMAIL);
   }
 
