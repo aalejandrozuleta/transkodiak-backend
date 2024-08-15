@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 export const routerVehicleCompany: Router = express.Router();
+import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
 //* ----- REGISTER VEHICLE COMPANY -----
 import { registerValidator } from '@middleware/validation/vehicleCompany/register';
@@ -15,7 +16,6 @@ routerVehicleCompany.post('/register', registerValidator, registerController);
 
 ///* ----- UPDATE VEHICLE COMPANY -----
 import { updateValidator } from '@middleware/validation/vehicleCompany/update';
-import { authenticateToken } from '@middleware/validation/vehicleCompany/autenticateToken';
 import { updateController } from '@controller/vehicleCompany/update';
 
 /**
@@ -25,7 +25,23 @@ import { updateController } from '@controller/vehicleCompany/update';
  */
 routerVehicleCompany.put(
   '/update',
-  authenticateToken,
+  jwtAuthMiddleware,
   updateValidator,
   updateController,
+);
+
+///* ----- GEt VEHICLE COMPANY -----
+
+import { getInformationController } from '@controller/vehicleCompany/getInformation';
+
+/**
+ * @route GET / getInformation
+ * @description COnsigue la información de la empresa vehicular
+ * @access Privado
+ */
+
+routerVehicleCompany.get(
+  '/getInformation',
+  jwtAuthMiddleware,
+  getInformationController,
 );
