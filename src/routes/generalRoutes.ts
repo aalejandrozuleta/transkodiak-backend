@@ -16,6 +16,11 @@ import { forgetPasswordController } from '@controller/general/forgetPassword';
 
 //* ----- chatBot -------------------------------------
 import { chatBotController } from '@controller/general/chatBot';
+import upload from '@middleware/logic/multer';
+
+//* ----- upload img --------------------------------
+import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
+import { uploadImageController } from '@controller/general/uploadImage';
 
 /**
  * @route POST / Auth
@@ -52,3 +57,16 @@ routerGeneral.put('/forgetPassword', forgetPasswordController);
  */
 
 routerGeneral.post('/chatBot', chatBotController);
+
+/**
+ * @route POST / subir imagen
+ * @description Subir una imagen al contenedor de azure
+ * @access private
+ */
+
+routerGeneral.post(
+  '/uploadImage',
+  upload.single('file'),
+  jwtAuthMiddleware,
+  uploadImageController,
+);
