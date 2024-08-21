@@ -5,7 +5,7 @@ export interface createTravelInterface {
     payment: number;
     description: string;
     departureDate: Date;
-    deliverDte: Date;
+    deliverDate: Date;
     idTransporter?: string;
-    idIntermediary?: string;
+    idIntermediary: string;
 }
