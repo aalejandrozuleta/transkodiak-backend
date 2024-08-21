@@ -14,6 +14,7 @@ import { createTravelController } from '@controller/travel/createTravel';
 
 routerTravel.post(
   '/createTravel',
+  jwtAuthMiddleware,
   createTravelValidator,
   createTravelController,
 );

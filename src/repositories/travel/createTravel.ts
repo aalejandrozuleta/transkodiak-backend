@@ -13,7 +13,7 @@ export default class createTravelRepository {
             travelData.description,
             travelData.departureDate,
             travelData.deliverDate,
-            travelData.idIntermediary || null,
+            travelData.idIntermediary,
             travelData.idTransporter || null 
         ];
         const result = (await db.execute(sql, values)) as [
