@@ -3,7 +3,7 @@ export const routerTravel: Router = express.Router();
 import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
 //* ----- CREATE VEHICLE-----
-import { createTravelValidator} from '@middleware/validation/travel/createTravel';
+import { createTravelValidator } from '@middleware/validation/travel/createTravel';
 import { createTravelController } from '@controller/travel/createTravel';
 
 /**

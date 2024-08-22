@@ -52,7 +52,9 @@ const createTravelValidator: ValidationChain[] = [
       const departureDate = new Date(req.body.departureDate);
       const deliverDate = new Date(value);
       if (deliverDate <= departureDate) {
-        throw new Error('La fecha de entrega debe ser posterior a la fecha de salida');
+        throw new Error(
+          'La fecha de entrega debe ser posterior a la fecha de salida',
+        );
       }
       return true;
     }),
@@ -60,7 +62,7 @@ const createTravelValidator: ValidationChain[] = [
 
 const validateTravel = (data: createTravelInterface) => {
   const errors = validationResult(data);
-  
+
   if (!errors.isEmpty()) {
     return errors.array();
   }

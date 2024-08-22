@@ -5,6 +5,7 @@ import { Request, Response } from 'express';
 import { createTravelService } from '@services/travel/createTravel';
 
 export const createTravelController = async (req: Request, res: Response) => {
+  const jwtIntermediary = req.body.token.id;
   // Validaciones de los datos
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -14,6 +15,8 @@ export const createTravelController = async (req: Request, res: Response) => {
   }
 
   const travelData: createTravelInterface = req.body;
+
+  travelData.idIntermediary = jwtIntermediary;
 
   const travel = new CreateTravelDto(
     travelData.weight,
@@ -30,6 +33,9 @@ export const createTravelController = async (req: Request, res: Response) => {
     await createTravelService(travel);
     res.status(201).json({ message: 'Viaje registrado exitosamente' });
   } catch (error) {
-    res.status(500).json({ error: error instanceof Error ? error.message : 'Ocurrió un error desconocido' });
+    res.status(500).json({
+      error:
+        error instanceof Error ? error.message : 'Ocurrió un error desconocido',
+    });
   }
 };
