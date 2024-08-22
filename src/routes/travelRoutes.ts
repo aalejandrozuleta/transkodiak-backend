@@ -18,3 +18,14 @@ routerTravel.post(
   createTravelValidator,
   createTravelController,
 );
+
+//* ------------------- CONSEGUIR VEHICULOS ------------------
+import { getTravelsController } from '@controller/travel/getTravels';
+
+/**
+ * @route GET /travels
+ * @description Obtener todos los viajes registrados por ese token
+ * @access privado (JWT)
+ */
+
+routerTravel.get('/listTravels', jwtAuthMiddleware, getTravelsController);
