@@ -31,6 +31,8 @@ export default class CreateTravelDto {
         this._idTransporter = idTransporter;
     }
 
+    
+
     public get weight(): number {
         return this._weight;
     }

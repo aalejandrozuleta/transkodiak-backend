@@ -24,7 +24,6 @@ export const createTravelController = async (req: Request, res: Response) => {
     travelData.departureDate,
     travelData.deliverDate,
     travelData.idIntermediary,
-    travelData.idTransporter,
   );
 
   try {
