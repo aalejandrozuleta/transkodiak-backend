@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 export const routerTravel: Router = express.Router();
 import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 
-//* ----- CREATE VEHICLE-----
+//* ----- CREATE TRAVEL----
 import { createTravelValidator } from '@middleware/validation/travel/createTravel';
 import { createTravelController } from '@controller/travel/createTravel';
 
@@ -19,7 +19,7 @@ routerTravel.post(
   createTravelController,
 );
 
-//* ------------------- CONSEGUIR VEHICULOS ------------------
+//* ------------------- CONSEGUIR TRAVELS BY TOKEN ------------------
 import { getTravelsController } from '@controller/travel/getTravels';
 
 /**
@@ -29,3 +29,15 @@ import { getTravelsController } from '@controller/travel/getTravels';
  */
 
 routerTravel.get('/listTravels', jwtAuthMiddleware, getTravelsController);
+
+
+//* ------------------- CONSEGUIR ALL TRAVELS ------------------
+import { allTravelsController } from '@controller/travel/allTravels';
+
+/**
+ * @route GET /travels
+ * @description Obtener todos los viajes registrados por ese token
+ * @access privado (JWT)
+ */
+
+routerTravel.get('/listAllTravels', allTravelsController);
