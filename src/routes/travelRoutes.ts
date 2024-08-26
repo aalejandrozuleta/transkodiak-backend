@@ -30,7 +30,6 @@ import { getTravelsController } from '@controller/travel/getTravels';
 
 routerTravel.get('/listTravels', jwtAuthMiddleware, getTravelsController);
 
-
 //* ------------------- CONSEGUIR ALL TRAVELS ------------------
 import { allTravelsController } from '@controller/travel/allTravels';
 

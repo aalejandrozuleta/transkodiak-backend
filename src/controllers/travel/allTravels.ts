@@ -4,9 +4,7 @@ import { Request, Response } from 'express';
 
 export const allTravelsController = async (req: Request, res: Response) => {
   try {
-
-    const travels: createTravelInterface[] =
-      await allTravelService();
+    const travels: createTravelInterface[] = await allTravelService();
     res.status(201).json({
       message: 'viajes conseguidos con exito',
       travels: travels[0],
