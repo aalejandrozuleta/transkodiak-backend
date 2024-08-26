@@ -58,6 +58,13 @@ const createTravelValidator: ValidationChain[] = [
       }
       return true;
     }),
+
+    body('vehicle_type')
+    .optional()
+    .isString()
+    .withMessage('El tipo de vehiculo debe ser una cadena de texto')
+    .isLength({ max: 255 })
+    .withMessage('La descripción no debe exceder los 50 caracteres'),
 ];
 
 const validateTravel = (data: createTravelInterface) => {

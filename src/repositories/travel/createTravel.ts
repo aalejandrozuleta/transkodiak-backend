@@ -4,7 +4,7 @@ import { FieldPacket } from 'mysql2';
 
 export default class createTravelRepository {
   static async createTravel(travelData: CreateTravelDto) {
-    const sql = 'CALL InsertTravel(?,?,?,?,?,?,?,?)';
+    const sql = 'CALL InsertTravel(?,?,?,?,?,?,?,?,?)';
     const values = [
       travelData.weight,
       travelData.origin,
@@ -13,6 +13,7 @@ export default class createTravelRepository {
       travelData.description,
       travelData.departureDate,
       travelData.deliverDate,
+      travelData.vehicle_type,
       travelData.idIntermediary,
     ];
     const result = (await db.execute(sql, values)) as [

@@ -26,6 +26,7 @@ export const createTravelController = async (req: Request, res: Response) => {
     travelData.description,
     travelData.departureDate,
     travelData.deliverDate,
+    travelData.vehicle_type,
     travelData.idIntermediary,
   );
 

@@ -6,6 +6,7 @@ export default class CreateTravelDto {
   private _description: string;
   private _departureDate: Date;
   private _deliverDate: Date;
+  private _vehicle_type: string;
   private _idIntermediary: string;
   private _idTransporter?: string;
 
@@ -17,6 +18,7 @@ export default class CreateTravelDto {
     description: string,
     departureDate: Date,
     deliverDate: Date,
+    vehicle_type: string,
     idIntermediary: string,
     idTransporter?: string, // Cambiado aquí
   ) {
@@ -27,6 +29,7 @@ export default class CreateTravelDto {
     this._description = description;
     this._departureDate = departureDate;
     this._deliverDate = deliverDate;
+    this._vehicle_type = vehicle_type;
     this._idIntermediary = idIntermediary;
     this._idTransporter = idTransporter;
   }
@@ -85,6 +88,14 @@ export default class CreateTravelDto {
 
   public set deliverDate(value: Date) {
     this._deliverDate = value;
+  }
+
+  public get vehicle_type(): string {
+    return this._vehicle_type;
+  }
+
+  public set vehicle_type(value: string) {
+    this.vehicle_type = value;
   }
 
   public get idIntermediary(): string {
