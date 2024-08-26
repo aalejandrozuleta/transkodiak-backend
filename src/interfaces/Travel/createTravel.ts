@@ -6,5 +6,6 @@ export interface createTravelInterface {
   description: string;
   departureDate: Date;
   deliverDate: Date;
+  vehicle_type: string;
   idIntermediary: string;
 }
