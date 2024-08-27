@@ -1,4 +1,3 @@
 export interface disableInterface {
-    id: string;
-  }
-  
+  id: string;
+}

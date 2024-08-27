@@ -59,7 +59,7 @@ const createTravelValidator: ValidationChain[] = [
       return true;
     }),
 
-    body('vehicle_type')
+  body('vehicle_type')
     .optional()
     .isString()
     .withMessage('El tipo de vehiculo debe ser una cadena de texto')

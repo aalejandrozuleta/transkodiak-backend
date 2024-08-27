@@ -46,5 +46,5 @@ routerVehicle.put(
   '/disable/:id',
   jwtAuthMiddleware,
   disableVehicleValidator,
-  disableController
+  disableController,
 );
