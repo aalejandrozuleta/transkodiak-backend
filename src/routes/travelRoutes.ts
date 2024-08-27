@@ -40,3 +40,22 @@ import { allTravelsController } from '@controller/travel/allTravels';
  */
 
 routerTravel.get('/listAllTravels', allTravelsController);
+
+//* ----- DISABLE VEHICLE -----
+
+import { disableController } from '@controller/travel/disable';
+import { disableTravelValidator } from '@middleware/validation/travel/disable';
+
+/**
+ * @route put /disable
+ * @description Deshabilitar un transportador
+ * @access Privado (JWT)
+ *
+ */
+
+routerTravel.put(
+  '/disable/:id',
+  jwtAuthMiddleware,
+  disableTravelValidator,
+  disableController,
+);
