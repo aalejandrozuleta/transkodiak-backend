@@ -29,3 +29,22 @@ import { getvehiclesController } from '@controller/vehicle/getVehicles';
  */
 
 routerVehicle.get('/listVehicles', jwtAuthMiddleware, getvehiclesController);
+
+//* ----- DISABLE VEHICLE -----
+
+import { disableController } from '@controller/vehicle/disable';
+import { disableVehicleValidator } from '@middleware/validation/vehicle/disable';
+
+/**
+ * @route put /disable
+ * @description Deshabilitar un transportador
+ * @access Privado (JWT)
+ *
+ */
+
+routerVehicle.put(
+  '/disable/:id',
+  jwtAuthMiddleware,
+  disableVehicleValidator,
+  disableController
+);
