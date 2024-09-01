@@ -12,6 +12,7 @@ import { routerTransporter } from '@routes/transporterRoutes';
 import { routerGeneral } from '@routes/generalRoutes';
 import { routerVehicle } from '@routes/vehicleRoutes';
 import { routerTravel } from '@routes/travelRoutes';
+import { routerNotification } from '@routes/notifactionRoutes';
 
 // Use routes
 app.use('/api/vehicleCompany', routerVehicleCompany);
@@ -20,6 +21,7 @@ app.use('/api/transporter', routerTransporter);
 app.use('/api/general', routerGeneral);
 app.use('/api/vehicle', routerVehicle);
 app.use('/api/travel', routerTravel);
+app.use('/api/notification',routerNotification);
 
 // Error handling
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
