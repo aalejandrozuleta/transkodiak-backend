@@ -3,5 +3,7 @@ export const ERROR_MESSAGE = {
   NOTIFICATION_ERROR: 'Error al crear la notificación',
   DISABLE_ERROR: 'Error al deshabilitar el usuario',
   STATUS_ERROR: 'Error al encontrar el estado del conductor',
-  STATUS_CODE: 'Este usuario no puede conseguir un nuevo viaje'
+  STATUS_CODE: 'Este usuario no puede conseguir un nuevo viaje',
+  ERROR_PROGRESS: 'Error al cambiar la acción del transportador',
+  ERROR_ACTION: 'Error al cambiar la acción de la notificación'
 };
