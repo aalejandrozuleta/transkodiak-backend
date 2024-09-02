@@ -28,3 +28,17 @@ routerNotification.put(
   jwtAuthMiddleware,
   notificationActionController,
 );
+
+/**
+ * @route get /notification
+ * @description Consigue las notificaciones
+ * @access privado
+*/
+
+import { getNotificationController } from '@controller/notification/getNotification';
+
+routerNotification.get(
+  '/getNotification',
+  jwtAuthMiddleware,
+  getNotificationController,
+);
