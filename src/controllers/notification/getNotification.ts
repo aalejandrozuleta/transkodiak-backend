@@ -9,7 +9,7 @@ export const getNotificationController = async (
   try {
     const data = req.body.token.id;
 
-    const notifications: getNotification[] = await getNotificationService(data); 
+    const notifications: getNotification[] = await getNotificationService(data);
 
     res.status(200).json({
       message: 'Notificaciones obtenidas con éxito',

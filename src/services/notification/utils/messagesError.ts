@@ -5,5 +5,5 @@ export const ERROR_MESSAGE = {
   STATUS_ERROR: 'Error al encontrar el estado del conductor',
   STATUS_CODE: 'Este usuario no puede conseguir un nuevo viaje',
   ERROR_PROGRESS: 'Error al cambiar la acción del transportador',
-  ERROR_ACTION: 'Error al cambiar la acción de la notificación'
+  ERROR_ACTION: 'Error al cambiar la acción de la notificación',
 };

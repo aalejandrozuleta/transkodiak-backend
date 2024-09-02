@@ -2,7 +2,7 @@ import { statusTransporter } from './interface/statusTransporter';
 import { createNotificationDto } from '@dto/notification/createNotification';
 import notificationRepository from '@repositories/notification/createNotification';
 import { ERROR_MESSAGE } from './utils/messagesError';
-import { FieldPacket, QueryResult } from 'mysql2';
+import { FieldPacket } from 'mysql2';
 
 export const createNotificationService = async (
   notification: createNotificationDto,

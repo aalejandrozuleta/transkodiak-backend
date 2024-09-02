@@ -19,7 +19,7 @@ routerNotification.post(
  * @route PUT /notificationAction
  * @description Acción para aceptar o denegar Transportador
  * @access privado
-*/
+ */
 
 import { notificationActionController } from '@controller/notification/notificationAction';
 
@@ -33,7 +33,7 @@ routerNotification.put(
  * @route get /notification
  * @description Consigue las notificaciones
  * @access privado
-*/
+ */
 
 import { getNotificationController } from '@controller/notification/getNotification';
 

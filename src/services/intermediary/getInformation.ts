@@ -5,10 +5,12 @@ import { informationVehicleCompany } from '@interfaces/vehicleCompany/informatio
 
 export const getInformationService = async (idIntermediary: string) => {
   const [result]: [informationVehicleCompany[], FieldPacket[]] =
-    await getInformation.getInformationIntermediary(idIntermediary).catch((error) => {
-      console.error(error);
-      throw new Error(ERROR_MESSAGE.DB_ERROR);
-    });
+    await getInformation
+      .getInformationIntermediary(idIntermediary)
+      .catch((error) => {
+        console.error(error);
+        throw new Error(ERROR_MESSAGE.DB_ERROR);
+      });
 
   return result;
 };

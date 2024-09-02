@@ -7,7 +7,7 @@ export const getInformationController = async (req: Request, res: Response) => {
     const idIntermediary = req.body.token.id;
 
     const information: informationIntermediary[] =
-      await getInformationService( idIntermediary);
+      await getInformationService(idIntermediary);
     res.status(201).json({
       message: 'Información conseguida con éxito',
       vehicles: information[0],

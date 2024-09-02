@@ -26,8 +26,8 @@ export const notificationActionService = async (
         console.error(errorRejected);
         throw new Error('Error en la base de datos');
       });
-    
-      await notificationActionRepository
+
+    await notificationActionRepository
       .associateTransporter(decision)
       .catch((errorRejected) => {
         console.error(errorRejected);

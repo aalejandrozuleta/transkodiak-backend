@@ -9,7 +9,12 @@ export const notificationActionController = async (
 ) => {
   const data: notificationAction = req.body;
 
-  const decision = new notificationActionDto(data.action, data.idNotification, data.idTransporter,data.idTravel);
+  const decision = new notificationActionDto(
+    data.action,
+    data.idNotification,
+    data.idTransporter,
+    data.idTravel,
+  );
 
   try {
     await notificationActionService(decision);

@@ -14,7 +14,6 @@ import { registerController } from '@controller/intermediary/register';
 
 routerIntermediary.post('/register', registerValidator, registerController);
 
-
 ///* ----- GET INFORMATION INTERMEDIARY -----
 
 import { getInformationController } from '@controller/intermediary/getInformation';
@@ -28,5 +27,5 @@ import { getInformationController } from '@controller/intermediary/getInformatio
 routerIntermediary.get(
   '/getInformation',
   jwtAuthMiddleware,
-  getInformationController
+  getInformationController,
 );

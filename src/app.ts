@@ -21,7 +21,7 @@ app.use('/api/transporter', routerTransporter);
 app.use('/api/general', routerGeneral);
 app.use('/api/vehicle', routerVehicle);
 app.use('/api/travel', routerTravel);
-app.use('/api/notification',routerNotification);
+app.use('/api/notification', routerNotification);
 
 // Error handling
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
