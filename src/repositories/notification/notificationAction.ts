@@ -1,18 +1,34 @@
-import  db  from '@config/mysql';
+import db from '@config/mysql';
 import notificationActionDto from '@dto/notification/notificationAction';
 
 export class notificationActionRepository {
-
   //accepted
-  static async inProgressTransporter(notificationAction: notificationActionDto) {
+  static async inProgressTransporter(
+    notificationAction: notificationActionDto,
+  ) {
     const query = 'CALL SetTransporterInProgress(?)';
-    const values = [ notificationAction.idTransporter];
+    const values = [notificationAction.idTransporter];
     return db.query(query, values);
   }
 
   static async accepted(notificationAction: notificationActionDto) {
     const query = 'CALL SetNotificationAccepted(?)';
     const values = [notificationAction.idNotification];
+    return db.query(query, values);
+  }
+
+  static async releaseTransporter(notificationAction: notificationActionDto) {
+    const query = 'CALL AcceptNotificationAndUpdateTransporters(?)';
+    const values = [notificationAction.idNotification];
+    return db.query(query, values);
+  }
+
+  static async associateTransporter(notificationAction: notificationActionDto) {
+    const query = 'CALL AssociateTransporter(?, ?)';
+    const values = [
+      notificationAction.idTravel,
+      notificationAction.idTransporter,
+    ];
     return db.query(query, values);
   }
 
@@ -29,5 +45,4 @@ export class notificationActionRepository {
     const values = [notificationAction.idNotification];
     return db.query(query, values);
   }
-
 }

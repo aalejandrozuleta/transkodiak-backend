@@ -19,6 +19,20 @@ export const notificationActionService = async (
         console.error(errorAccepted);
         throw new Error(ERROR_MESSAGE.ERROR_ACTION);
       });
+
+    await notificationActionRepository
+      .releaseTransporter(decision)
+      .catch((errorRejected) => {
+        console.error(errorRejected);
+        throw new Error('Error en la base de datos');
+      });
+    
+      await notificationActionRepository
+      .associateTransporter(decision)
+      .catch((errorRejected) => {
+        console.error(errorRejected);
+        throw new Error('Error en la base de datos');
+      });
   }
 
   if (decision.action === 'denegad') {

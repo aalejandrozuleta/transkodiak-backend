@@ -1,9 +1,10 @@
 export default class notificationActionDto {
 
-	constructor(action: string, idNotification: number, idTransporter: number) {
+	constructor(action: string, idNotification: number, idTransporter: number, idTravel: number) {
 		this._action = action;
 		this._idNotification = idNotification;
 		this._idTransporter = idTransporter;
+		this._idTravel = idTravel;
 	}
 
     /**
@@ -31,6 +32,14 @@ export default class notificationActionDto {
 	}
 
     /**
+     * Getter idTravel
+     * @return {number}
+     */
+	public get idTravel(): number {
+		return this._idTravel;
+	}
+
+    /**
      * Setter action
      * @param {string} value
      */
@@ -53,7 +62,16 @@ export default class notificationActionDto {
 	public set idTransporter(value: number) {
 		this._idTransporter = value;
 	}
+
+    /**
+     * Setter idTravel
+     * @param {number} value
+     */
+	public set idTravel(value: number) {
+		this._idTravel = value;
+	}
   private _action: string;
   private _idNotification: number;
   private _idTransporter: number;
+  private _idTravel: number;
 }
