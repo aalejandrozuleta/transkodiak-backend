@@ -13,4 +13,5 @@ export const ERROR_MESSAGE = {
   INHABILITE_USER: 'El transportador no se logra inhabilitar',
   EXISTING_EMAIL: 'El email ya esta en uso',
   EXISTING_NAME: 'El name de empresa ya esta en uso',
+  SEND_EMAIL_FAILED: 'Error al enviar el correo',
 };

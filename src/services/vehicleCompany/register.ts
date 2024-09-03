@@ -4,8 +4,8 @@ import RegisterDto from '@dto/vehicleCompany/register';
 import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/vehicleCompany/register';
 import { ERROR_MESSAGE } from './utils/messagesError';
-import { sendWelcomeEmail } from '@helpers/mail/welcome';
 import { searchEmail } from '@interfaces/general/searchEmail';
+import axios from 'axios';
 
 export const registerService = async (userData: RegisterDto) => {
   const [existingEmail]: [searchEmail[], FieldPacket[]] =
@@ -44,7 +44,25 @@ export const registerService = async (userData: RegisterDto) => {
   );
   userData.password = passwordHash;
 
-  await sendWelcomeEmail(userData.email);
+  await axios
+    .post(
+      `${process.env.ROUTE_EMAIL_AZURE}`,
+      {
+        subject: 'Registro exitoso de Empresa Vehicular',
+        to: userData.email,
+        dataTemplate: { name: userData.name },
+        templateName: 'register.html',
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .catch((errorSend) => {
+      console.error(errorSend);
+      throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
+    });
 
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerVehicleCompany(userData).catch(

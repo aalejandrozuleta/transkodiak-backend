@@ -6,7 +6,7 @@ import { FieldPacket } from 'mysql2';
 import { ERROR_MESSAGE } from './utils/messagesError';
 import { generateTemCode } from '@helpers/generateTemCode';
 import { saveCodeToRedis } from '@helpers/redis/saveCode';
-import { sendCodeForgetPassword } from '@helpers/mail/sendCodeForgetPassword';
+import axios from 'axios';
 
 export const codeForgetPasswordService = async (
   user: codeForgetPasswordDto,
@@ -31,17 +31,30 @@ export const codeForgetPasswordService = async (
     code: code.code,
   };
 
-  console.error(temCode.code);
-
   await saveCodeToRedis(temCode).catch((saveError) => {
     console.error(saveError);
     throw new Error(ERROR_MESSAGE.SAVE_CODE_REDIS_ERROR);
   });
 
-  await sendCodeForgetPassword(user.email, code.code).catch((sendError) => {
-    console.error(sendError);
-    throw new Error(ERROR_MESSAGE.SEND_CODE_FORGET_PASSWORD_ERROR);
-  });
+  await axios
+    .post(
+      `${process.env.ROUTE_EMAIL_AZURE}`,
+      {
+        subject: 'Código de recuperación',
+        to: user.email,
+        dataTemplate: { code: temCode.code },
+        templateName: 'forgetPassword.html',
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .catch((errorSend) => {
+      console.error(errorSend);
+      throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
+    });
 
   return {
     code: code.code,

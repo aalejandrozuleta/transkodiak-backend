@@ -6,4 +6,5 @@ export const ERROR_MESSAGE = {
   CREDENTIALS: 'credenciales incorrectas',
   BLOCKED_USER: 'El transportador esta bloqueado',
   INHABILITE_USER: 'El transportador no se logra inhabilitar',
+  SEND_EMAIL_FAILED: 'Error al enviar el correo',
 };
