@@ -9,5 +9,5 @@ export const ERROR_MESSAGE = {
   FORGET_PASSWORD_CODE_INVALID: 'Código de recuperación inválido',
   FORGET_PASSWORD_REDIS_ERROR: 'Error al buscar código en Redis',
   HASH_PASSWORD_FAILED: 'Error al hashear la contraseña',
-  SEND_EMAIL_FAILED: 'Error al enviar el correo'
+  SEND_EMAIL_FAILED: 'Error al enviar el correo',
 };

@@ -37,24 +37,24 @@ export const codeForgetPasswordService = async (
   });
 
   await axios
-  .post(
-    `${process.env.ROUTE_EMAIL_AZURE}`,
-    {
-      subject: 'Código de recuperación',
-      to: user.email,
-      dataTemplate: {"code":temCode.code },
-      templateName: 'forgetPassword.html',
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
+    .post(
+      `${process.env.ROUTE_EMAIL_AZURE}`,
+      {
+        subject: 'Código de recuperación',
+        to: user.email,
+        dataTemplate: { code: temCode.code },
+        templateName: 'forgetPassword.html',
       },
-    },
-  )
-  .catch((errorSend) => {
-    console.error(errorSend);
-    throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
-  });
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .catch((errorSend) => {
+      console.error(errorSend);
+      throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
+    });
 
   return {
     code: code.code,

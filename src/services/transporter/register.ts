@@ -36,7 +36,7 @@ export const registerService = async (userData: RegisterDto) => {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
-  const passwordNoHash = userData.password
+  const passwordNoHash = userData.password;
 
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
@@ -53,7 +53,11 @@ export const registerService = async (userData: RegisterDto) => {
       {
         subject: 'Registro exitoso de transportador',
         to: userData.email,
-        dataTemplate: {"name":userData.name, "email":userData.email, "password":passwordNoHash },
+        dataTemplate: {
+          name: userData.name,
+          email: userData.email,
+          password: passwordNoHash,
+        },
         templateName: 'registerTransporter.html',
       },
       {
