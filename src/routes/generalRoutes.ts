@@ -22,6 +22,10 @@ import upload from '@middleware/logic/multer';
 import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 import { uploadImageController } from '@controller/general/uploadImage';
 
+//* ------- CHANGE PASSWORD -------------------------
+
+import { changePasswordController } from '@controller/general/changePassword';
+
 /**
  * @route POST / Auth
  * @description Autenticar un usuario
@@ -70,3 +74,11 @@ routerGeneral.post(
   jwtAuthMiddleware,
   uploadImageController,
 );
+
+/**
+ * @route POST / cambiar contraseña
+ * @description Cambiar contraseña
+ * @access private
+ */
+
+routerGeneral.post('/change-password', jwtAuthMiddleware, changePasswordController);
