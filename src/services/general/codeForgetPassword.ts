@@ -43,7 +43,7 @@ export const codeForgetPasswordService = async (
       subject: 'Código de recuperación',
       to: user.email,
       dataTemplate: {"code":temCode.code },
-      templateName: 'register.html',
+      templateName: 'forgetPassword.html',
     },
     {
       headers: {
