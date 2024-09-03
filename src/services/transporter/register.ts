@@ -1,11 +1,13 @@
+import axios from 'axios';
 import { transporterFindByIdentificationId } from './interface/transporterFindByCedula';
 import { FieldPacket } from 'mysql2';
 import RegisterDto from '@dto/transporter/register';
 import { hashPassword } from '@helpers/password/hashPassword';
 import RegisterRepository from '@repositories/transporter/register';
 import { ERROR_MESSAGE } from './utils/messagesError';
-import { sendWelcomeEmail } from '@helpers/mail/welcome';
 import { searchEmail } from '@interfaces/general/searchEmail';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const registerService = async (userData: RegisterDto) => {
   const [existingEmail]: [searchEmail[], FieldPacket[]] =
@@ -34,6 +36,8 @@ export const registerService = async (userData: RegisterDto) => {
     throw new Error(ERROR_MESSAGE.EXISTING_NAME);
   }
 
+  const passwordNoHash = userData.password
+
   // Intentar hashear la contraseña
   const passwordHash = await hashPassword(userData.password).catch(
     (hashError) => {
@@ -43,7 +47,25 @@ export const registerService = async (userData: RegisterDto) => {
   );
   userData.password = passwordHash;
 
-  await sendWelcomeEmail(userData.email);
+  await axios
+    .post(
+      `${process.env.ROUTE_EMAIL_AZURE}`,
+      {
+        subject: 'Registro exitoso de transportador',
+        to: userData.email,
+        dataTemplate: {"name":userData.name, "email":userData.email, "password":passwordNoHash },
+        templateName: 'registerTransporter.html',
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .catch((errorSend) => {
+      console.error(errorSend);
+      throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
+    });
 
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerTransporter(userData).catch(
