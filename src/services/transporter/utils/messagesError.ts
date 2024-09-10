@@ -7,5 +7,6 @@ export const ERROR_MESSAGE = {
   BLOCKED_USER: 'El transportador esta bloqueado',
   INHABILITE_USER: 'El transportador no se logra inhabilitar',
   SEND_EMAIL_FAILED: 'Error al enviar el correo',
-  HISTORY_ERROR: 'Error al conseguir el historial'
+  HISTORY_ERROR: 'Error al conseguir el historial',
+  GET_INFORMATION: 'Error al conseguir la informacion'
 };

@@ -56,6 +56,7 @@ routerTransporter.put(
 
 //* ----- HISTORY TRANSPORTER -----
 import { historyTravelController } from '@controller/transporter/historyTravel';
+
 /**
  * @route GET /history
  * @description Conseguir el historial
@@ -64,3 +65,16 @@ import { historyTravelController } from '@controller/transporter/historyTravel';
  */
 
 routerTransporter.get('/history', jwtAuthMiddleware, historyTravelController);
+
+//* ----- INFORMATION TRANSPORTER -----
+import { getInformationTransporterController } from '@controller/transporter/getInformation';
+import { getInformationTransporter } from '@middleware/validation/transporter/getInformation';
+
+/**
+ * @route GET / informationTransporter
+ * @description Conseguir información del transportador
+ * @access Privado (JWT)
+ *
+ */
+
+routerTransporter.get('/informationTransporter/:id', jwtAuthMiddleware,getInformationTransporter, getInformationTransporterController);
