@@ -53,3 +53,14 @@ routerTransporter.put(
   disableValidator,
   disableController,
 );
+
+//* ----- HISTORY TRANSPORTER -----
+import { historyTravelController } from '@controller/transporter/historyTravel';
+/**
+ * @route GET /history
+ * @description Conseguir el historial
+ * @access Privado (JWT)
+ *
+ */
+
+routerTransporter.get('/history', jwtAuthMiddleware, historyTravelController);
