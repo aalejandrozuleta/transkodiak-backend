@@ -8,8 +8,6 @@ export const notificationActionController = async (
   res: Response,
 ) => {
   const data: notificationAction = req.body;
-  console.log(data);
-  
 
   const decision = new notificationActionDto(
     data.action,
@@ -17,9 +15,6 @@ export const notificationActionController = async (
     data.idTransporter,
     data.idTravel,
   );
-
-  console.log(decision);
-  
 
   try {
     await notificationActionService(decision);

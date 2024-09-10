@@ -6,5 +6,5 @@ export interface getNotification {
   destination: string;
   description: string | null;
   transporter_id: number;
-  notification_id:number;
+  notification_id: number;
 }
