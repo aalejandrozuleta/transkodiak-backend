@@ -18,7 +18,6 @@ export const createNotificationController = async (
   );
 
   try {
-    console.log(notificationData);
     await createNotificationService(createNotification);
     res.status(201).json({ message: 'Notificación creada exitosamente' });
   } catch (error) {
