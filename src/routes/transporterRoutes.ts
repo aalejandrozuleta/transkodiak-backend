@@ -83,3 +83,20 @@ routerTransporter.get(
   getInformationTransporter,
   getInformationTransporterController,
 );
+
+/**
+ * @route put / active
+ * @description Habilitar un transportador
+ * @access Privado (JWT)
+ *
+ */
+
+import { activeController } from '@controller/transporter/active';
+import { activeValidator } from '@middleware/validation/transporter/active';
+
+routerTransporter.put(
+  '/active/:id',
+  jwtAuthMiddleware,
+  activeValidator,
+  activeController,
+);
