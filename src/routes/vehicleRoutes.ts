@@ -48,3 +48,21 @@ routerVehicle.put(
   disableVehicleValidator,
   disableController,
 );
+
+//* ------------------- CONSEGUIR VEHICULO ------------------
+
+
+/**
+ * @route GET / vehicle
+ * @description Obtener el vehículo con la placa
+ * @access privado (JWT)
+ */
+import { getInformationVehicleController } from '@controller/vehicle/getInformationVehicle';
+import { getInformationVehicle } from '@middleware/validation/vehicle/getInformationVehicle';
+
+routerVehicle.get(
+  '/informationVehicle/:plate',
+  jwtAuthMiddleware,
+  getInformationVehicle,
+  getInformationVehicleController,
+);

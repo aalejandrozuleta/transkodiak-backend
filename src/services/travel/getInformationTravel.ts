@@ -9,7 +9,6 @@ export const getInformationTravelService = async (idTravel:string) =>{
       console.error(error);
       throw Error (ERROR_MESSAGE.GET_INFORMATION)
     })
-    console.log(travelResult);
     
     return travelResult
   } catch (error) {

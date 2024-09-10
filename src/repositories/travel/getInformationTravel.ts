@@ -4,7 +4,7 @@ import { FieldPacket } from "mysql2";
 
 export class getInformationTravelRepository {
   static async getInformation(idTravel:string){
-    console.log(idTravel);
+
     
     const sql = 'CALL GetTravelDetailsByTripId(?)';
     const data = [idTravel];

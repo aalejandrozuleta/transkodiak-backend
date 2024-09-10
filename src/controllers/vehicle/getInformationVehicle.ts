@@ -1,9 +1,9 @@
-import { getInformationTravel } from '@interfaces/transpoter/getInformationTravel';
-import { getInformationTravelService } from '@services/travel/getInformationTravel';
+import { getInformationVehicle } from '@interfaces/vehicle/getInformationVehicle';
+import { getInformationVehicleService } from '@services/vehicle/getInformationVehicle';
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 
-export const getInformationTravelController = async (
+export const getInformationVehicleController = async (
   req: Request,
   res: Response,
 ) => {
@@ -15,14 +15,14 @@ export const getInformationTravelController = async (
       .json({ errors: errors.array().map((err) => err.msg) });
   }
 
-  const idTravel: string = req.params.id;
+  const idVehicle: string = req.params.plate;
 
   try {
-    const travel: getInformationTravel[] =
-      await getInformationTravelService(idTravel);
+    const vehicle: getInformationVehicle[] =
+      await getInformationVehicleService(idVehicle);
     res.status(201).json({
       message: 'Información Conseguida con éxito',
-      transporters: travel[0],
+      transporters: vehicle[0],
     });
   } catch (error) {
     // Comprobar si el error es una instancia de Error
