@@ -41,16 +41,15 @@ import { allTravelsController } from '@controller/travel/allTravels';
 
 routerTravel.get('/listAllTravels', allTravelsController);
 
-//* ----- DISABLE VEHICLE -----
+//* ----- DISABLE Travel -----
 
 import { disableController } from '@controller/travel/disable';
 import { disableTravelValidator } from '@middleware/validation/travel/disable';
 
 /**
  * @route put /disable
- * @description Deshabilitar un transportador
+ * @description Deshabilitar un viaje
  * @access Privado (JWT)
- *
  */
 
 routerTravel.put(
@@ -58,4 +57,23 @@ routerTravel.put(
   jwtAuthMiddleware,
   disableTravelValidator,
   disableController,
+);
+
+
+//* ----- GET INFORMATION TRAVEL -----
+import { getInformationTravelController } from '@controller/travel/getInformationTravel';
+import { getInformationTravel } from '@middleware/validation/travel/getInformationTravel';
+
+/**
+ * @route GET /travels
+ * @description Obtener todos los viajes registrados por ese token
+ * @access privado (JWT)
+
+ */
+
+routerTravel.get(
+  '/informationTravel/:id',
+  jwtAuthMiddleware,
+  getInformationTravel,
+  getInformationTravelController,
 );
