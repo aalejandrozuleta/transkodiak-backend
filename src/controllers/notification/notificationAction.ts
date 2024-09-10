@@ -18,6 +18,9 @@ export const notificationActionController = async (
     data.idTravel,
   );
 
+  console.log(decision);
+  
+
   try {
     await notificationActionService(decision);
     res.status(201).json({ message: 'Decision realizada con éxito' });
