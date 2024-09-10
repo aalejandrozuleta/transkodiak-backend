@@ -1,13 +1,13 @@
-import { historyTravel } from "@interfaces/transpoter/historyTravel";
-import { historyTravelService } from "@services/transporter/historyTravel";
-import { Request, Response } from "express";
+import { historyTravel } from '@interfaces/transpoter/historyTravel';
+import { historyTravelService } from '@services/transporter/historyTravel';
+import { Request, Response } from 'express';
 
-export const historyTravelController = async (req:Request, res:Response) => {
+export const historyTravelController = async (req: Request, res: Response) => {
   try {
     const idTransporter = req.body.token.id;
 
-    const history:historyTravel[] = await historyTravelService(idTransporter);
-   
+    const history: historyTravel[] = await historyTravelService(idTransporter);
+
     res.status(201).json({
       message: 'Historial conseguido éxito',
       transporters: history[0],
@@ -25,4 +25,4 @@ export const historyTravelController = async (req:Request, res:Response) => {
       });
     }
   }
-}
+};

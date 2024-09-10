@@ -51,7 +51,6 @@ routerVehicle.put(
 
 //* ------------------- CONSEGUIR VEHICULO ------------------
 
-
 /**
  * @route GET / vehicle
  * @description Obtener el vehículo con la placa

@@ -77,4 +77,9 @@ import { getInformationTransporter } from '@middleware/validation/transporter/ge
  *
  */
 
-routerTransporter.get('/informationTransporter/:id', jwtAuthMiddleware,getInformationTransporter, getInformationTransporterController);
+routerTransporter.get(
+  '/informationTransporter/:id',
+  jwtAuthMiddleware,
+  getInformationTransporter,
+  getInformationTransporterController,
+);

@@ -59,7 +59,6 @@ routerTravel.put(
   disableController,
 );
 
-
 //* ----- GET INFORMATION TRAVEL -----
 import { getInformationTravelController } from '@controller/travel/getInformationTravel';
 import { getInformationTravel } from '@middleware/validation/travel/getInformationTravel';
