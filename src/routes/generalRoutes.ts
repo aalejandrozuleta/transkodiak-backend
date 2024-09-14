@@ -22,6 +22,9 @@ import upload from '@middleware/logic/multer';
 import { jwtAuthMiddleware } from '@middleware/logic/jwtValidation';
 import { uploadImageController } from '@controller/general/uploadImage';
 
+//* ----- statics --------------------------------
+import { statisticsController } from '@controller/general/statistics';
+
 /**
  * @route POST / Auth
  * @description Autenticar un usuario
@@ -70,3 +73,5 @@ routerGeneral.post(
   jwtAuthMiddleware,
   uploadImageController,
 );
+
+routerGeneral.get('/statics',jwtAuthMiddleware,statisticsController)
