@@ -36,7 +36,7 @@ import { getInformationController } from '@controller/vehicleCompany/getInformat
 
 /**
  * @route GET / getInformation
- * @description COnsigue la información de la empresa vehicular
+ * @description Consigue la información de la empresa vehicular
  * @access Privado
  */
 
@@ -45,3 +45,18 @@ routerVehicleCompany.get(
   jwtAuthMiddleware,
   getInformationController,
 );
+
+/**
+ * @route GET / getDisabledTransporter
+ * @description COnsigue la información de los usuarios deshabilitados
+ * @access Privado
+ */
+import { getDisabledController } from '@controller/vehicleCompany/getDisable';
+
+routerVehicleCompany.get(
+  '/getDisabledTransporter',
+  jwtAuthMiddleware,
+  getDisabledController,
+);
+
+//123456739
