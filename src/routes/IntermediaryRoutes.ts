@@ -29,3 +29,12 @@ routerIntermediary.get(
   jwtAuthMiddleware,
   getInformationController,
 );
+
+/**
+ * @route GET / getHistory
+ * @description Consigue el historial de viajes
+ * @access Privado
+ */
+
+import { getHistoryController } from '@controller/intermediary/getHistory';
+routerIntermediary.get('/getHistory', jwtAuthMiddleware, getHistoryController);
