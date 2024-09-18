@@ -74,4 +74,4 @@ routerGeneral.post(
   uploadImageController,
 );
 
-routerGeneral.get('/statics',jwtAuthMiddleware,statisticsController)
+routerGeneral.get('/statics', jwtAuthMiddleware, statisticsController);

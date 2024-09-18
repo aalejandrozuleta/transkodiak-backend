@@ -6,8 +6,7 @@ export const statisticsController = async (req: Request, res: Response) => {
   const rolUSer = req.body.token.typeUser;
 
   try {
-    const information =
-      await statisticsService(idUser, rolUSer);
+    const information = await statisticsService(idUser, rolUSer);
     res.status(201).json({
       message: 'Información conseguida con éxito',
       vehicles: information,

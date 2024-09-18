@@ -38,3 +38,17 @@ routerIntermediary.get(
 
 import { getHistoryController } from '@controller/intermediary/getHistory';
 routerIntermediary.get('/getHistory', jwtAuthMiddleware, getHistoryController);
+
+/**
+ * @route PUT / finishTravel
+ * @description Finaliza un viaje
+ * @access Privado
+ */
+
+import { finishTravelController } from '@controller/intermediary/finishTravel';
+
+routerIntermediary.put(
+  '/finishTravel/:id',
+  jwtAuthMiddleware,
+  finishTravelController,
+);

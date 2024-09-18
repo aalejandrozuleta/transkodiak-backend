@@ -8,5 +8,5 @@ export const getHistoryService = async (id: number) => {
       throw new Error('Error en la base de datos');
     });
 
-    return result[0];
+  return result[0];
 };

@@ -1,9 +1,9 @@
-import { getDisableRepository } from "@repositories/vehicleCompany/getDisable";
-import { ERROR_MESSAGE } from "./utils/messagesError";
-import { getDisableInterface } from "@interfaces/vehicleCompany/getDisable";
-import { FieldPacket } from "mysql2";
+import { getDisableRepository } from '@repositories/vehicleCompany/getDisable';
+import { ERROR_MESSAGE } from './utils/messagesError';
+import { getDisableInterface } from '@interfaces/vehicleCompany/getDisable';
+import { FieldPacket } from 'mysql2';
 
-export const getDisableService = async (idCompany:string) =>{
+export const getDisableService = async (idCompany: string) => {
   try {
     const [result]: [getDisableInterface[], FieldPacket[]] =
       await getDisableRepository.getDisable(idCompany);
@@ -15,4 +15,4 @@ export const getDisableService = async (idCompany:string) =>{
     console.error(error);
     throw new Error(ERROR_MESSAGE.DB_ERROR);
   }
-}
+};
