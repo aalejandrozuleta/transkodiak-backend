@@ -76,3 +76,12 @@ routerTravel.get(
   getInformationTravel,
   getInformationTravelController,
 );
+
+
+import { getHistoryFinishController } from '@controller/travel/getHistoryFinish';
+
+routerTravel.get(
+  '/getHistoryFinish',
+  jwtAuthMiddleware,
+  getHistoryFinishController,
+);
