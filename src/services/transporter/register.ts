@@ -47,29 +47,29 @@ export const registerService = async (userData: RegisterDto) => {
   );
   userData.password = passwordHash;
 
-  await axios
-    .post(
-      `${process.env.ROUTE_EMAIL_AZURE}`,
-      {
-        subject: 'Registro exitoso de transportador',
-        to: userData.email,
-        dataTemplate: {
-          name: userData.name,
-          email: userData.email,
-          password: passwordNoHash,
-        },
-        templateName: 'registerTransporter.html',
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    )
-    .catch((errorSend) => {
-      console.error(errorSend);
-      throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
-    });
+  // await axios
+  //   .post(
+  //     `${process.env.ROUTE_EMAIL_AZURE}`,
+  //     {
+  //       subject: 'Registro exitoso de transportador',
+  //       to: userData.email,
+  //       dataTemplate: {
+  //         name: userData.name,
+  //         email: userData.email,
+  //         password: passwordNoHash,
+  //       },
+  //       templateName: 'registerTransporter.html',
+  //     },
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     },
+  //   )
+  //   .catch((errorSend) => {
+  //     console.error(errorSend);
+  //     throw new Error(ERROR_MESSAGE.SEND_EMAIL_FAILED);
+  //   });
 
   // Intentar registrar la empresa en la base de datos
   return await RegisterRepository.registerTransporter(userData).catch(
